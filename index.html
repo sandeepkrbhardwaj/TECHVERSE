@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techverse</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Arial, sans-serif;background:#fff;}
+
+    /* NAVBAR */
+    .navbar{
+      position:fixed;top:0;left:0;right:0;
+      height:64px;background:#071833;color:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:8px 40px;
+      z-index:1000;
+    }
+
+    .nav-left{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-left:10px;
+    }
+
+    .logo{height:40px;}
+    .brand{color:white;text-decoration:none;font-size:22px;font-weight:bold;}
+
+    .navbar > div:last-child button{
+      margin-left:16px;
+    }
+
+    .navbar > div:last-child{
+      margin-right:40px;
+    }
+
+    .btn{
+      background:#0b75da;border:none;padding:8px 14px;
+      color:white;border-radius:8px;cursor:pointer;font-weight:600;
+    }
+
+    /* PAGE */
+    main{
+      padding-top:80px;
+    }
+
+    .layout{
+      max-width:1200px;
+      margin:10px auto 0;
+      padding:0;
+      display:block;
+    }
+
+    .hero{
+      width:100%;
+      max-width:1200px;
+      height:430px;
+      object-fit:cover;
+      border-radius:10px;
+      display:block;
+      margin:auto;
+    }
+
+    /* COURSES */
+    .courses{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      max-width:1200px;
+      margin:30px auto 60px;
+      padding-bottom:10px;
+    }
+
+    .course-box{
+      width:280px;
+      text-align:center;
+    }
+
+    .course-box img{
+      width:100%;
+      border-radius:12px;
+      object-fit:cover;
+    }
+
+    .course-box h2{
+      margin-top:12px;
+      font-size:20px;
+      font-weight:bold;
+    }
+
+    /* MODAL */
+    #popupModal{
+      display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);
+      justify-content:center;align-items:center;z-index:3000;
+    }
+    #popupModal.show{display:flex;}
+
+    #popupDialog{
+      width:95%;max-width:600px;background:white;border-radius:12px;
+      max-height:90vh;overflow:hidden;position:relative;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    #popupClose{
+      position:absolute;right:12px;top:10px;cursor:pointer;font-size:28px;border:none;background:none;
+    }
+
+    #popupBody{padding:20px;}
+
+    iframe{
+      width:100%;height:70vh;border:none;border-radius:6px;
+    }
+
+    input{
+      width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:6px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo1.jpg" class="logo">
+      <a href="#" class="brand">Techverse</a>
+    </div>
+
+    <div>
+      <button id="loginBtn" class="btn">Login</button>
+      <button id="signupBtn" class="btn">Sign Up</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="layout">
+      <img src="home.png" class="hero">
+    </div>
+
+    <div class="courses">
+      <div class="course-box">
+        <img src="software-dev.png">
+        <h2>Software Development</h2>
+      </div>
+
+      <div class="course-box">
+        <img src="discussion.png">
+        <h2>Full Stacks DEV</h2>
+      </div>
+
+      <div class="course-box">
+        <img src="web-dev.png">
+        <h2>Web Development</h2>
+      </div>
+
+      <div class="course-box">
+        <img src="ai-dev.png">
+        <h2>AI Development</h2>
+      </div>
+    </div>
+  </main>
+
+  <!-- POPUP -->
+  <div id="popupModal">
+    <div id="popupDialog">
+      <button id="popupClose">&times;</button>
+      <div id="popupBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("popupModal");
+    const popupBody = document.getElementById("popupBody");
+    const closeBtn = document.getElementById("popupClose");
+
+    function openModal(){ modal.classList.add("show"); document.body.style.overflow="hidden"; }
+    function closeModal(){ modal.classList.remove("show"); document.body.style.overflow=""; }
+
+    closeBtn.onclick = closeModal;
+    modal.onclick = e => { if(e.target===modal) closeModal(); };
+    window.onkeydown = e => { if(e.key==="Escape") closeModal(); };
+
+    /* LOGIN POPUP */
+    document.getElementById("loginBtn").onclick = function(){
+      popupBody.innerHTML = `
+        <h2 style="text-align:center;">Login</h2>
+        <form onsubmit="event.preventDefault(); alert('Logged In!'); closeModal();">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button class='btn' style='width:100%;margin-top:10px;'>Login</button>
+        </form>
+      `;
+      openModal();
+    };
+
+    /* SIGNUP POPUP ---- FIXED */
+    document.getElementById("signupBtn").onclick = function(){
+      popupBody.innerHTML = `<iframe src="sign-up.html"></iframe>`;
+      openModal();
+    };
+  </script>
+
+</body>
+</html>
