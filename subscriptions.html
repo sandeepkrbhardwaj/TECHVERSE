@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:Arial, sans-serif;background:#fff;}
+
+        main{
+            padding-top:40px;
+            max-width:1200px;
+            margin:auto;
+        }
+
+        /* GRID: 4 images per row */
+        .courses{
+            display:grid;
+            grid-template-columns: repeat(4, 1fr); /* ⭐ 4 per row */
+            gap:90px;
+            padding:20px;
+            justify-content: space-around;
+        }
+
+        .course-box{
+            width:100%; 
+            text-align:center;
+        }
+
+        .course-box img{
+         width:200px;
+            border-radius:5px;
+            object-fit:cover;
+
+        }
+
+        .course-box h2{
+            margin-top:10px;
+            font-size:18px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="courses">
+
+            <div class="course-box">
+                <img src="dev1.jpg">
+                <h2>DEVOPS</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev2.jpg">
+                <h2>CYBER SECURITYS</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev3.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev4.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev5.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev6.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev7.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+            <div class="course-box">
+                <img src="dev8.jpg">
+                <h2>Web DT</h2>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
