@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Techverse</title>
   <style>
-    /* Very basic reset */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
 
-    /* Header: simple three-column layout */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -22,7 +20,6 @@
       z-index: 1000;
     }
 
-    /* left: brand */
     .brand {
       display:flex;
       align-items:center;
@@ -31,7 +28,6 @@
     .brand img { height: 40px; border-radius:6px; }
     .brand .title { font-weight:700; font-size:18px; color:#fff; text-decoration:none; }
 
-    /* center: search */
     .search-wrap {
       flex: 1 1 auto;
       display:flex;
@@ -50,12 +46,12 @@
       font-size:14px;
     }
 
-    /* right: notification + profile */
     .right {
       display:flex;
       align-items:center;
       gap:10px;
     }
+
     .notif-btn {
       position:relative;
       background:transparent;
@@ -66,6 +62,7 @@
       padding:6px;
       border-radius:6px;
     }
+
     .badge {
       position:absolute;
       top:0; right:0;
@@ -75,6 +72,15 @@
       padding:2px 6px;
       border-radius:999px;
     }
+
+    /* NEW: Avatar image */
+    .avatar {
+      width:36px;
+      height:36px;
+      border-radius:6px;
+      object-fit: cover;
+    }
+
     .profile {
       display:flex;
       align-items:center;
@@ -83,13 +89,7 @@
       color:#fff;
       position:relative;
     }
-    .avatar {
-      width:36px; height:36px; border-radius:6px;
-      background:#e2e8f0; color:#111; display:flex;
-      align-items:center; justify-content:center; font-weight:700;
-    }
 
-    /* dropdown (basic) */
     .dropdown {
       position:absolute;
       top:48px;
@@ -114,7 +114,6 @@
     }
     .dropdown a:hover, .dropdown button:hover { background:#f5f5f5; }
 
-    /* Sidebar unchanged (kept simple) */
     .sidebar {
       position: fixed;
       top: 60px;
@@ -126,7 +125,15 @@
       padding: 12px;
       overflow-y: auto;
     }
-    .sidebar a { display:block; padding:8px; margin-bottom:6px; color:#111; text-decoration:none; border-radius:6px; }
+    .sidebar a {
+      display:block;
+      padding:8px;
+      margin-bottom:6px;
+      color:#111;
+      text-decoration:none;
+      border-radius:6px;
+    }
+
     .sidebar a.active, .sidebar a:hover { background:#f3f4f6; }
 
     .content {
@@ -137,10 +144,13 @@
     }
     iframe { width:100%; height:100%; border:0; display:block; }
 
-    /* responsive: hide center search on small screens */
     @media (max-width:760px){
       .search-wrap { display:none; }
-      .sidebar { position:relative; width:100%; height:auto; top:0; border-right:none; border-bottom:1px solid #eee; display:flex; gap:6px; overflow-x:auto; padding:8px; }
+      .sidebar {
+        position:relative; width:100%; height:auto; top:0;
+        border-right:none; border-bottom:1px solid #eee;
+        display:flex; gap:6px; overflow-x:auto; padding:8px;
+      }
       .content { margin-left:0; margin-top:0; height:auto; min-height:60vh; }
     }
   </style>
@@ -148,7 +158,6 @@
 <body>
 
   <header>
-    <!-- left -->
     <div class="brand">
       <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
         <img src="logo1.jpg" alt="logo">
@@ -156,22 +165,22 @@
       </a>
     </div>
 
-    <!-- center: search -->
     <div class="search-wrap">
       <div class="search-box">
         <input id="searchInput" type="search" placeholder="Search videos (demo)">
       </div>
     </div>
 
-    <!-- right: notifications + profile -->
     <div class="right">
       <button id="notifBtn" class="notif-btn" title="Notifications">🔔
         <span class="badge" id="notifCount">3</span>
       </button>
 
-      <div id="profileBtn" class="profile" aria-haspopup="true" aria-expanded="false">
-        <div class="avatar" id="avatarInitial">G</div>
-        <div class="dropdown" id="profileMenu" role="menu" aria-hidden="true">
+      <div id="profileBtn" class="profile">
+        <!-- NEW PROFILE IMAGE -->
+        <img src="profile.jpg" class="avatar" id="avatarImage" alt="profile">
+
+        <div class="dropdown" id="profileMenu">
           <a href="profile.html" target="mainFrame">View profile</a>
           <a href="profile.html#notifications" target="mainFrame">Notifications</a>
           <button id="logoutBtn">Logout</button>
@@ -180,25 +189,21 @@
     </div>
   </header>
 
-  <!-- Sidebar -->
   <nav class="sidebar">
     <a href="home.html" target="mainFrame" class="nav-link active">Home</a>
     <a href="trending.html" target="mainFrame" class="nav-link">language</a>
     <a href="subscriptions.html" target="mainFrame" class="nav-link">Development</a>
-    <a href="quick learning.html" target="mainFrame" class="nav-link">Quick Learning
-    </a>
+    <a href="quick learning.html" target="mainFrame" class="nav-link">Quick Learning</a>
     <hr style="margin:8px 0;border:none;border-top:1px solid #eee">
     <a href="video1.html" target="mainFrame" class="nav-link">video learning</a>
     <a href="video2.html" target="mainFrame" class="nav-link">exchange</a>
   </nav>
 
-  <!-- Main iframe content -->
   <div class="content">
-    <iframe id="mainFrame" name="mainFrame" src="home.html" title="Main content"></iframe>
+    <iframe id="mainFrame" name="mainFrame" src="home.html"></iframe>
   </div>
 
   <script>
-    // sidebar active link
     document.querySelectorAll('.nav-link').forEach(a => {
       a.addEventListener('click', () => {
         document.querySelectorAll('.nav-link').forEach(x => x.classList.remove('active'));
@@ -206,10 +211,8 @@
       });
     });
 
-    // profile dropdown toggle
     const profileBtn = document.getElementById('profileBtn');
     const profileMenu = document.getElementById('profileMenu');
-    const avatarInitial = document.getElementById('avatarInitial');
     const notifBtn = document.getElementById('notifBtn');
     const notifCount = document.getElementById('notifCount');
 
@@ -221,51 +224,25 @@
 
     document.addEventListener('click', () => profileMenu.style.display = 'none');
 
-    // simple logout demo (clears localStorage profile)
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('techverse_profile');
-      updateHeader(null);
       profileMenu.style.display = 'none';
       document.getElementById('mainFrame').src = 'home.html';
     });
 
-    // notification button behavior: open profile notifications anchor and hide badge
     notifBtn.addEventListener('click', () => {
       document.getElementById('mainFrame').src = 'profile.html#notifications';
       notifCount.style.display = 'none';
     });
 
-    // search enter handling
     document.getElementById('searchInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
         const q = e.target.value.trim();
         if (!q) return;
         alert('Search (demo): ' + q);
-        // Example: load search page in iframe if you have one:
-        // document.getElementById('mainFrame').src = 'search.html?q=' + encodeURIComponent(q);
       }
     });
-
-    // update header from saved profile in localStorage
-    function updateHeader() {
-      try {
-        const raw = localStorage.getItem('techverse_profile');
-        if (!raw) {
-          avatarInitial.textContent = 'G';
-          return;
-        }
-        const p = JSON.parse(raw);
-        const initials = (p.name || 'G').split(' ').map(s => s[0]||'').join('').slice(0,2).toUpperCase();
-        avatarInitial.textContent = initials || 'G';
-      } catch (err) {
-        avatarInitial.textContent = 'G';
-      }
-    }
-
-    // init
-    updateHeader();
-    // show/hide profile name for larger screens is intentionally omitted to keep HTML basic
   </script>
 </body>
 </html>
