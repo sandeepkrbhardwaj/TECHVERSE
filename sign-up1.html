@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign up</title>
+  <style>
+    /* reset & safe layout */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #dddbdb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden; /* prevent horizontal scroll / right strip */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 24px; /* safe breathing room on very small screens */
+    }
+
+    /* card */
+    .box{
+      width: 100%;
+      max-width: 420px;
+      background: #dddbdb;
+      padding: 28px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px #dddbdb
+      /* ensure it cannot overflow horizontally */
+      /* overflow:hidden; */
+    }
+
+    /* logo */
+    .box img{
+      display: block;
+      margin: 0 auto 18px;
+      height: 100px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    h2{
+      text-align: center;
+      margin: 0 0 18px;
+      font-size: 22px;
+      color: #111;
+    }
+
+    /* inputs full width, no overflow */
+    input{
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #dddbdb;
+      font-size: 15px;
+      background: #fff;
+      box-shadow: none;
+      outline: none;
+     appearance: none;
+
+    }
+    input:focus { border-color: #6b4bd6; box-shadow: 0 0 0 4px rgba(107,75,214,0.06); }
+
+    .btn{
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #6b4bd6;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 16px;
+    }
+    .btn:hover{ background:#5b3fc0; }
+
+    .small{
+      font-size:14px;
+      color:#333;
+      text-align:center;
+      margin-top:14px;
+      word-break:break-word;
+    }
+
+    #toLogin{
+      background:none;
+      border:none;
+      color:#6b4bd6;
+      cursor:pointer;
+      text-decoration:underline;
+      font-size:14px;
+      padding:0;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:460px){
+      .box { padding: 20px; max-width: 100%; }
+      .box img { height: 84px; margin-bottom:12px; }
+      h2 { font-size:20px; margin-bottom:14px; }
+      input { margin:8px 0; padding:10px; }
+      .btn { padding:11px; font-size:15px; border-radius:8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="box" role="main" aria-labelledby="signupTitle">
+    <img src="sign-logo.png" alt="logo" />
+    <h2 id="signupTitle">Create account</h2>
+
+    <form id="signupForm" autocomplete="on" novalidate>
+      <input type="text" name="name" placeholder="Full name" required autocomplete="name" />
+      <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+      <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+      <button type="submit" class="btn">Sign up</button>
+    </form>
+
+    <p class="small">
+      Already have an account?
+      <button id="toLogin">Sign in</button>
+    </p>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('signupForm');
+      const toLogin = document.getElementById('toLogin');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        // close parent modal if available
+        try {
+          if (window.parent && typeof window.parent.closeModal === 'function') {
+            window.parent.closeModal();
+          }
+        } catch(err){ /* ignore cross-origin issues */ }
+
+        // navigate to login page (safe fallback)
+        try {
+          if (window.parent && window.parent !== window) {
+            window.parent.location.href = 'login-page.html';
+          } else {
+            window.location.href = 'login-page.html';
+          }
+        } catch(err){
+          window.location.href = 'login-page.html';
+        }
+      });
+
+      toLogin.addEventListener('click', function(){
+        try {
+          const loginBtn = window.parent.document.getElementById('loginBtn');
+          if (loginBtn) loginBtn.click();
+        } catch(err){
+          // fallback: open login page in same window
+          window.location.href = 'login-page.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
