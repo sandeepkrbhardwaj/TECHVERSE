@@ -1,85 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Active vs Passive Learning</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carousel-style Banner Layout</title>
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
       font-family: Arial, sans-serif;
+      background: #fafafa;
+      padding: 30px;
     }
 
-    body{
-      background: linear-gradient(to right, #a3bbd4, #bed7ee);
-      padding:40px;
+    .carousel {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .container{
-      display:flex;
+    /* Viewport holds the cards and clips overflow so side cards peek */
+    .viewport {
+      overflow: hidden;
+      padding: 10px 0;
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
       justify-content: center;
-      gap:30px;
+      gap: 24px;
+      /* allow partial peeking by not constraining children strictly */
+      padding: 0 40px;
     }
 
-    .box{
-      width:300px;
-      padding:20px;
-      background:rgb(219, 229, 161);
-      border-radius:20px;
-      box-shadow:0 4px 20px rgba(0,0,0,0.1);
-      text-align:center;
-      transition:0.3s;
+    /* Generic card */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      overflow: hidden;
+      flex: 0 0 auto;
+      display: block;
+      position: relative;
     }
 
-    .box:hover{
-      transform:translateY(-8px);
-      box-shadow:0 6px 25px rgba(0,0,0,0.2);
+    /* left/right small cards */
+    .card.side {
+      width: 170px;            /* small peek cards */
+      height: 220px;
+      transform: scale(0.98);
+      opacity: 0.95;
     }
 
-    .title{
-      font-size:24px;
-      font-weight:bold;
-      margin-bottom:15px;
-      color:#333;
+    /* center big card */
+    .card.center {
+      width: calc(100% - 420px); /* responsive - center uses remaining width */
+      height: 260px;
+      max-width: 820px;
+      min-width: 520px;
+      transform: scale(1);
     }
 
-    .text{
-      font-size:16px;
-      color:#555;
-      line-height:1.4;
+    /* images fill card */
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
+    /* arrow buttons */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .arrow.left { left: 18px; }
+    .arrow.right { right: 18px; }
+
+    /* small circular dots */
+    .dots {
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:18px;
+    }
+    .dot {
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#c7d0d8;
+    }
+    .dot.active {
+      background:#6d7b86;
+      width:12px;
+      height:12px;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:900px){
+      .card.side { display:none; } /* hide side peeks on small screens */
+      .card.center { min-width: 320px; width:100%; }
+      .track { padding: 0 12px; }
+    }
   </style>
 </head>
 <body>
 
-  <h1 style="text-align:center; margin-bottom:40px;">Active vs Passive Learning</h1>
+  <div class="carousel">
+    <div class="viewport">
+      <div class="track">
+        <!-- left small card (peek) -->
+        <a class="card side" href="#">
+          <img src="/mnt/data/a16d6803-1bbe-45fe-9bd8-5d743389cffc.png" alt="left card">
+        </a>
 
-  <div class="container">
+        <!-- center large card -->
+        <a class="card center" href="#">
+          <img src="/mnt/data/a16d6803-1bbe-45fe-9bd8-5d743389cffc.png" alt="main banner">
+        </a>
 
-    <div class="box">
-      <div class="title">Active Learning</div>
-      <div class="text">
-        - Students participate<br><br>
-        - Ask questions<br><br>
-        - Group activities<br><br>
-        - Practical learning<br><br>
+        <!-- right small card (peek) -->
+        <a class="card side" href="#">
+          <img src="/mnt/data/a16d6803-1bbe-45fe-9bd8-5d743389cffc.png" alt="right card">
+        </a>
       </div>
     </div>
 
-    <div class="box">
-      <div class="title">Passive Learning</div>
-      <div class="text">
-        - Students listen only<br><br>
-        - No interaction<br><br>
-        - Teacher-centered<br><br>
-        - Less engagement<br><br>
-      </div>
-    </div>
+    <!-- arrows (purely visual in this static version) -->
+    <button class="arrow left" aria-label="previous">&#8249;</button>
+    <button class="arrow right" aria-label="next">&#8250;</button>
 
+    <!-- pagination dots -->
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+    </div>
   </div>
 
 </body>
