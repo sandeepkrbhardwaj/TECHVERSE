@@ -186,11 +186,17 @@
     window.onkeydown = e => { if(e.key==="Escape") closeModal(); };
 
     /* LOGIN POPUP */
-   document.getElementById("loginBtn").onclick = function(){
-      popupBody.innerHTML = `<iframe src="sign-up.html"></iframe>`;
+    document.getElementById("loginBtn").onclick = function(){
+      popupBody.innerHTML = `
+        <h2 style="text-align:center;">Login</h2>
+        <form onsubmit="event.preventDefault(); alert('Logged In!'); closeModal();">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button class='btn' style='width:100%;margin-top:10px;'><a href="login-page.html" alt="text.decoration">Login</a></button>
+        </form>
+      `;
       openModal();
     };
-      
 
     /* SIGNUP POPUP ---- FIXED */
     document.getElementById("signupBtn").onclick = function(){
