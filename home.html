@@ -6,79 +6,98 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Exchange and grow tech skills — a modern platform for learning, teaching and collaborating on coding, AI, design, and cybersecurity.">
   <title>YourSiteName — Tech Skill Exchange</title>
+
   <style>
-    /* Basic reset */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
     body { background: #f6f9fb; color: #111827; line-height: 1.5; }
 
-    
+    /* HERO SECTION */
+    .hero {
+      width: 100%;
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(56, 76, 121, 0.08);
+      text-align: center;
+    }
 
-    /* Hero */
-    .top { padding-top: 80px; }
-    .hero { width: 100%; max-width: 1400px; margin: 28px auto; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 6px 20px rgba(56, 76, 121, 0.08); padding-left: 25px;padding-bottom:0px;}
-    .hero img { display:block; width:100%; height: 700px;  }
-    .hero-content { padding: 28px 32px; text-align: center; }
-    .hero h1 { font-size: 40px; margin-bottom: 8px; color:#0b3b6f; }
-    .hero h2 { font-size: 20px; margin-bottom: 14px; color:#233b56; font-weight:500; }
-    .hero p { max-width: 900px; margin: 0 auto 18px auto; font-size: 16px; color:#334155; }
-    .hero 
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 25px;
+      color: #0b3b6f;
+    }
 
-    /* About + mission columns */
-    .grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; max-width: 1100px; margin: 18px auto; padding: 0 18px; }
-    .card { background:white; padding:18px; border-radius:10px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
-    .mission { font-weight:700; margin-bottom:8px; color:#0b3b6f; }
+    /* Image centering */
+    .hero-img-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .hero-img-box img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      color: #233b56;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 900px;
+      margin: 0 auto;
+      color: #334155;
+    }
 
     /* CTA */
-    .cta { text-align:center; margin: 28px 0 60px; }
-    .btn { background:#0b3b6f; color:white; padding:12px 20px; border-radius: 8px; text-decoration:none; font-weight:700; }
+    .cta { text-align: center; margin: 28px 0 60px; }
+    .btn {
+      background: #0b3b6f;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
 
     /* Footer */
-    footer { text-align:center; padding:20px 0; color:#64748b; font-size:14px; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero img { height: 420px; }
-      .grid { grid-template-columns: 1fr; padding: 0 12px; }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: #64748b;
+      font-size: 14px;
     }
-    @media (max-width: 480px) {
-      .hero img { height: 300px; }
-      .hero h1 { font-size: 26px; }
+
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 28px; }
+      .hero-img-box img { height: auto; }
     }
   </style>
 </head>
+
 <body>
 
- 
-
-  <!-- Hero: image + tagline below -->
+  <!-- HERO SECTION -->
   <section class="hero" role="banner">
-     <h1>Smart tech skills.Clean learning.  Better growth - every day.</h1>
-    <img src="acp.png" alt="Active vs Passive l">
-   
-      </section>
-     <section class="hero" role="banner">
-       <div class="hero-content">
-      <strong><h2>Learn together. Grow together. Exchange knowledge that matters.</h2></strong>
-      <strong><p>Welcome to our platform — a modern space where people share, exchange, and grow their tech skills with clarity and confidence. We make learning simple, interactive, and meaningful.</p></strong>
+
+    <h1>Smart tech skills. Clean learning. Better growth - every day.</h1>
+
+    <div class="hero-img-box">
+      <img src="acp.png" alt="Active vs Passive Learning">
     </div>
+
+    <h2><strong>Learn together. Grow together. Exchange knowledge that matters.</strong></h2>
+    <p><strong>Welcome to our platform — a modern space where people share, exchange, and grow their tech skills with clarity and confidence. We make learning simple, interactive, and meaningful.</strong></p>
+
   </section>
-<section class="hero"  role="banner"><!-- About + Mission/Vision -->
-  <img src="egrowth.jpg"alt="text-decoration">
-  
-    <div class="hero">
-     <big><h3>About Us</h3></big>
-      <p><strong >We’re a future-ready tech learning community built to make skill-sharing easy and accessible. Our goal is to create an environment where anyone can learn, teach, and exchange modern tech skills — from coding and AI to design, cybersecurity, and beyond.</p></strong>
-    </div>
-
-    <div class="hero">
-      <big><div class="hero-content">MISSION</div></big> 
-      <p><strong>To empower every learner by connecting them with real skills, real people, and real opportunities in tech.</strong></p></div>
-
-      <hr style="margin:12px 0;">
-     <big> <div class="hero-content">Vision</div></big>
-      <p><strong>To become the world’s most trusted space for exchanging knowledge and building powerful tech careers.</strong></p>
-    </div>
-  </div>
 
   <!-- CTA -->
   <div class="cta">
@@ -93,5 +112,6 @@
   <script>
     document.getElementById('year').innerText = new Date().getFullYear();
   </script>
+
 </body>
 </html>
