@@ -49,7 +49,7 @@
     .right {
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:22px;
     }
 
     .notif-btn {
@@ -75,13 +75,14 @@
 
     /* NEW: Avatar image */
     .avatar {
-      width:36px;
-      height:36px;
-      border-radius:6px;
-      object-fit: cover;
-    }
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 24px; /* shift slightly left */
+}
 
-    .profile {
+      .profile {
       display:flex;
       align-items:center;
       gap:8px;
@@ -178,7 +179,8 @@
 
       <div id="profileBtn" class="profile">
         <!-- NEW PROFILE IMAGE -->
-        <img src="profile.jpg" class="avatar" id="avatarImage" alt="profile">
+       <img src="profile.jpg" class="avatar" id="avatarImage" alt="profile">
+
 
         <div class="dropdown" id="profileMenu">
           <a href="profile.html" target="mainFrame">View profile</a>
