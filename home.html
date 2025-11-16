@@ -1,153 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peek Carousel — works with left/right peeks</title>
 
   <style>
-    /* =============== BASIC RESET =============== */
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial;
+    /* ====== Basic reset ====== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #e6f0f7; padding: 36px; }
+
+    /* ====== Carousel outer container ====== */
+    .carousel {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
     }
 
-    body{
-      background:#90b3cf;
-      padding:40px;
+    /* viewport clips overflow so side cards peek only partially */
+    .viewport {
+      overflow: hidden;
+      padding: 12px 36px; /* gives room for arrows */
     }
 
-    /* =============== CAROUSEL WRAPPER =============== */
-    .carousel{
-      width:100%;
-      max-width:1200px;
-      margin:auto;
-      position:relative;
+    /* track is a horizontal flex row of slides */
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 24px;        /* space between slides */
+      transition: transform 500ms ease;
+      will-change: transform;
+      /* we will set transform via JS to center active slide */
     }
 
-    .track{
-      display:flex;
-      overflow:hidden;   /* hides cards going out of view */
-      width:100%;
+    /* Each slide wraps a card; width can vary */
+    .slide {
+      flex: 0 0 auto;   /* don't grow or shrink automatically */
+      display: block;
+      cursor: pointer;
     }
 
-    .slide{
-      min-width:100%;    /* each slide takes full width */
-      transition:0.5s;   /* slide animation */
+    /* Side (small) card style */
+    .card.small {
+      width: 220px;     /* small peek card width */
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(11,20,30,0.08);
     }
 
-    /* Card Style */
-    .card{
-      height:350px;
-      background:#debaba;
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 8px 30px rgba(0,0,0,0.1);
+    /* Center (large) card style */
+    .card.large {
+      width: 740px;     /* center card wider */
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(11,20,30,0.12);
     }
 
-    .card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    /* image fills card */
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
     }
 
-    /* =============== ARROW BUTTONS =============== */
-    .arrow{
+    /* Active visual (optional) - scale center slightly */
+    .slide.active .card {
+      transform: scale(1.01);
+      transition: transform 300ms ease;
+    }
+
+    /* Arrows */
+    .arrow {
       position:absolute;
       top:50%;
       transform:translateY(-50%);
+      width:48px;
+      height:48px;
+      border-radius:12px;
       background:#fff;
-      width:45px;
-      height:45px;
-      border-radius:10px;
+      box-shadow:0 8px 24px rgba(2,10,20,0.08);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:22px;
+      font-size:20px;
       cursor:pointer;
-      box-shadow:0 4px 15px rgba(0,0,0,0.15);
       user-select:none;
     }
+    .arrow.left { left:8px; }
+    .arrow.right { right:8px; }
 
-    .left{
-      left:-20px;
+    /* Dots (optional) */
+    .dots {
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:18px;
     }
-
-    .right{
-      right:-20px;
+    .dot {
+      width:10px; height:10px; border-radius:50%; background:#cfd8df;
     }
+    .dot.active { background:#6b7b83; width:12px; height:12px; }
 
+    /* Responsive: hide peeks on small screens and make center full width */
+    @media (max-width:880px) {
+      .card.small { display:none; }       /* hide side peeks */
+      .card.large { width:100%; }        /* center uses full width */
+      .viewport { padding: 12px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- =============== CAROUSEL =============== -->
-  <div class="carousel">
+  <div class="carousel" id="carousel">
 
-    <!-- SLIDE TRACK -->
-    <div class="track" id="track">
+    <!-- left arrow -->
+    <div class="arrow left" id="prev" aria-label="previous">&#8249;</div>
 
-      <!-- Slide 1 -->
-      <div class="slide">
-        <div class="card">
-          <img src="discussion.png" alt="">
+    <!-- clipping viewport -->
+    <div class="viewport">
+      <div class="track" id="track">
+        <!-- We'll place slides here - add or remove slides freely -->
+        <div class="slide" data-index="0">
+          <div class="card small"><img src="dev1.jpg" alt="slide 1"></div>
+        </div>
+
+        <div class="slide" data-index="1">
+          <div class="card large"><img src="discussion.png" alt="slide 2"></div>
+        </div>
+
+        <div class="slide" data-index="2">
+          <div class="card small"><img src="dev4.jpg" alt="slide 3"></div>
+        </div>
+
+        <div class="slide" data-index="3">
+          <div class="card small"><img src="/dev8.jpg" alt="slide 4"></div>
+        </div>
+
+        <div class="slide" data-index="4">
+          <div class="card small"><img src="/web-dev.png" alt="slide 5"></div>
         </div>
       </div>
-
-      <!-- Slide 2 -->
-      <div class="slide">
-        <div class="card">
-          <img src="dev8.jpg" alt="">
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="slide">
-        <div class="card">
-          <img src="dev1.jpg" alt="">
-        </div>
-      </div>
-
     </div>
 
-    <!-- ARROWS -->
-    <div class="arrow left" id="prev">&#8249;</div>
-    <div class="arrow right" id="next">&#8250;</div>
+    <!-- right arrow -->
+    <div class="arrow right" id="next" aria-label="next">&#8250;</div>
 
+    <!-- optional dots -->
+    <div class="dots" id="dots"></div>
   </div>
 
-  <!-- =============== JAVASCRIPT =============== -->
   <script>
-    // slide index
-    let index = 0;
+    /*************************************************************************
+     * Peek Carousel JS
+     *
+     * - centers the active slide inside the viewport (works with variable widths)
+     * - shows left/right peeks because viewport clips overflow
+     * - handles arrows, click-to-select, window resize, and wrap-around
+     *
+     * Key idea:
+     *   To center a slide, compute the slide's center relative to the track,
+     *   then translate the track so that slideCenter aligns with containerCenter.
+     *************************************************************************/
 
-    // get track
-    const track = document.getElementById("track");
+    const track = document.getElementById('track');
+    const slides = Array.from(track.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const viewport = document.querySelector('.viewport');
+    const dotsContainer = document.getElementById('dots');
+    let activeIndex = 1; // start with index 1 (center large slide in our example)
 
-    // get total slides
-    const slides = document.querySelectorAll(".slide");
-    const total = slides.length;
-
-    // NEXT BUTTON
-    document.getElementById("next").onclick = function() {
-      index++;
-      if(index >= total) index = 0;   // loop back to start
-      updateSlide();
+    // create dots matching slides (visual aid)
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      slides.forEach((s, i) => {
+        const d = document.createElement('div');
+        d.className = i === activeIndex ? 'dot active' : 'dot';
+        d.dataset.index = i;
+        d.addEventListener('click', () => {
+          activeIndex = i;
+          update();
+        });
+        dotsContainer.appendChild(d);
+      });
     }
 
-    // PREV BUTTON
-    document.getElementById("prev").onclick = function() {
-      index--;
-      if(index < 0) index = total - 1;  // go to last slide
-      updateSlide();
+    // center the slide at given index
+    function centerSlide(index) {
+      const slide = slides[index];
+      if (!slide) return;
+
+      // get bounding boxes
+      const slideRect = slide.getBoundingClientRect();
+      const trackRect = track.getBoundingClientRect();
+      const viewportRect = viewport.getBoundingClientRect();
+
+      // slide center relative to track left
+      // slide.offsetLeft gives left relative to track's content box
+      const slideCenter = slide.offsetLeft + (slide.offsetWidth / 2);
+
+      // desired center position (viewport center relative to track start)
+      const viewportCenter = (viewport.clientWidth / 2);
+
+      // compute translate value so slideCenter comes to viewportCenter
+      let translateX = slideCenter - viewportCenter;
+
+      // constrain translation so we don't translate beyond track bounds (prevents empty space)
+      const maxTranslate = track.scrollWidth - viewport.clientWidth; // maximum positive translate
+      if (translateX < 0) translateX = 0;
+      if (translateX > maxTranslate) translateX = maxTranslate;
+
+      // apply transform (negative because we move track left to bring slide into view)
+      track.style.transform = `translateX(-${translateX}px)`;
     }
 
-    // FUNCTION TO MOVE SLIDER
-    function updateSlide(){
-      track.style.transform = `translateX(-${index * 100}%)`;
+    // update active classes, dots, and center transform
+    function update() {
+      // active class on slides (for optional styling)
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === activeIndex);
+      });
+
+      // update dots
+      Array.from(dotsContainer.children).forEach((d, i) => {
+        d.classList.toggle('active', i === activeIndex);
+      });
+
+      // center the active slide
+      centerSlide(activeIndex);
     }
+
+    // next/prev handlers (with wrapping)
+    nextBtn.addEventListener('click', () => {
+      activeIndex = (activeIndex + 1) % slides.length;
+      update();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+      update();
+    });
+
+    // click on any slide to make it active and center
+    slides.forEach((s, i) => {
+      s.addEventListener('click', () => {
+        activeIndex = i;
+        update();
+      });
+    });
+
+    // recenter on window resize so layout remains correct
+    window.addEventListener('resize', () => {
+      // small debounce
+      clearTimeout(window.__peekCarouselResize);
+      window.__peekCarouselResize = setTimeout(() => update(), 80);
+    });
+
+    // initialize dots and center
+    createDots();
+    // small timeout to allow images to load and layout to stabilize before centering
+    window.addEventListener('load', () => {
+      update();
+      // if images not fully loaded, try again shortly
+      setTimeout(update, 200);
+    });
+
+    // also call update once now (useful in many quick dev reloads)
+    update();
   </script>
 
 </body>
