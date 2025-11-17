@@ -1,116 +1,196 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Exchange and grow tech skills — a modern platform for learning, teaching and collaborating on coding, AI, design, and cybersecurity.">
   <title>YourSiteName — Tech Skill Exchange</title>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    body { background: #f6f9fb; color: #111827; line-height: 1.5; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-    /* HERO SECTION */
+    body {
+      background: #f6f9fb;
+      color: #111827;
+    }
+
+    /* ---------------- HERO SECTION ---------------- */
     .hero {
-      width: 100%;
       max-width: 1400px;
-      margin: 40px auto;
-      padding: 20px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(56, 76, 121, 0.08);
+      margin: 40px auto;
+      padding: 30px;
       text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(56, 76, 121, 0.1);
     }
 
     .hero h1 {
       font-size: 40px;
-      margin-bottom: 25px;
       color: #0b3b6f;
+      margin-bottom: 25px;
+      line-height: 1.3;
     }
 
-    /* Image centering */
+    /* Center image */
     .hero-img-box {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
-      margin-bottom: 20px;
+      height: auto;
+      margin-bottom: 25px;
+      border-radius: 10px;
     }
 
     .hero-img-box img {
-      display: block;
-      margin: 0 auto;
       max-width: 100%;
       height: auto;
+      border-radius: 10px;
     }
 
     .hero h2 {
       font-size: 22px;
-      color: #233b56;
       margin-bottom: 10px;
+      color: #233b56;
+      font-weight: 600;
     }
 
     .hero p {
       max-width: 900px;
       margin: 0 auto;
+      font-size: 16px;
       color: #334155;
+      font-weight: 600;
     }
 
-    /* CTA */
-    .cta { text-align: center; margin: 28px 0 60px; }
+    /* ---------------- ABOUT SECTION ---------------- */
+    .section {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+    }
+
+    .section h3 {
+      color: #0b3b6f;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .section p {
+      font-size: 16px;
+      color: #334155;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* Mission & Vision Boxes */
+    .mv-box {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .mv-title {
+      font-size: 22px;
+      color: #0b3b6f;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* CTA BUTTON */
+    .cta {
+      text-align: center;
+      margin: 40px 0;
+    }
+
     .btn {
       background: #0b3b6f;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 22px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 700;
+      font-size: 18px;
     }
 
-    /* Footer */
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px 0;
-      color: #64748b;
       font-size: 14px;
+      color: #64748b;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero h1 { font-size: 28px; }
-      .hero-img-box img { height: auto; }
+      .hero h1 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- =============== HERO SECTION =============== -->
   <section class="hero" role="banner">
 
-    <h1>Smart tech skills. Clean learning. Better growth - every day.</h1>
+    <div style="font-size: 40px; "><b>Smart tech skills.   Clean learning.    Better growth - every day.</b></div>
 
     <div class="hero-img-box">
       <img src="acp.png" alt="Active vs Passive Learning">
     </div>
 
-    <h2><strong>Learn together. Grow together. Exchange knowledge that matters.</strong></h2>
-    <p><strong>Welcome to our platform — a modern space where people share, exchange, and grow their tech skills with clarity and confidence. We make learning simple, interactive, and meaningful.</strong></p>
+    <h2>Learn together. Grow together. Exchange knowledge that matters.</h2>
+    <p>Welcome to our platform — a modern space where people share, exchange, and grow their tech skills with clarity and confidence. We make learning simple, interactive, and meaningful.</p>
 
   </section>
 
-  <!-- CTA -->
+
+  <!-- =============== ABOUT SECTION =============== -->
+  <section class="section">
+    <div class="hero-img-box">
+      <img src="egrowth.jpg" alt="Active vs Passive Learning">
+    </div>
+    <h3>About Us</h3>
+    <p>We’re a future-ready tech learning community built to make skill-sharing easy and accessible. Our goal is to create an environment where anyone can learn, teach, and exchange modern tech skills — from coding and AI to design, cybersecurity, and beyond.</p>
+
+    <div class="mv-box">
+      <div class="mv-title">MISSION</div>
+      <p>To empower every learner by connecting them with real skills, real people, and real opportunities in tech.</p>
+    </div>
+
+    <div class="mv-box" style="margin-top: 20px;">
+      <div class="mv-title">VISION</div>
+      <p>To become the world’s most trusted space for exchanging knowledge and building powerful tech careers.</p>
+    </div>
+  </section>
+
+
+  <!-- =============== CTA BUTTON =============== -->
   <div class="cta">
     <a class="btn" href="trending.html">Start Learning</a>
   </div>
 
-  <!-- Footer -->
+  <!-- =============== FOOTER =============== -->
   <footer>
     © <span id="year"></span> YourSiteName • All rights reserved
   </footer>
 
   <script>
-    document.getElementById('year').innerText = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
 </body>
