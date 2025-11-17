@@ -93,12 +93,13 @@
       position:relative;
     }
 
+    /* ✅ UPDATED: PROFILE DROPDOWN WHITE */
     .dropdown {
       position:absolute;
       top:48px;
       right:0;
-      background: #071833;
-      color:#111;
+      background: #ffffff;       /* WHITE */
+      color:#ef0707;                /* BLACK TEXT */
       min-width:160px;
       border-radius:6px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
@@ -106,18 +107,23 @@
       z-index:1100;
     }
 
+    /* Updated hover for white menu */
     .dropdown a, .dropdown button {
       display:block;
       padding:8px 10px;
       border:none;
       text-decoration:none;
-      color:inherit;
+      color:#000;                /* BLACK */
       text-align:left;
       background:transparent;
       width:100%;
+      font-size:16px;
+      margin-left: 5px; 
     }
 
-    .dropdown a:hover, .dropdown button:hover { background: #071833; }
+    .dropdown a:hover, .dropdown button:hover {
+      background:#f2f2f2;        /* LIGHT GREY */
+    }
 
     .sidebar {
       position: fixed;
@@ -129,7 +135,6 @@
       border-right: 1px solid #e6e6e6;
       padding: 12px;
       overflow-y: auto;
-
     }
 
     .sidebar a {
@@ -190,8 +195,7 @@
 
         <div class="dropdown" id="profileMenu">
           <a href="profile.html" target="mainFrame">View profile</a>
-          <a href="profile.html#notifications" target="mainFrame">Notifications</a>
-          <button id="logoutBtn">Logout</button>
+          <button id="logoutBtn"><a href="index.html" style="margin-left: 5px;"> Logout</button>
         </div>
       </div>
     </div>
@@ -225,7 +229,6 @@
     const notifBtn = document.getElementById('notifBtn');
     const notifCount = document.getElementById('notifCount');
 
-    // Profile dropdown toggle
     profileBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const visible = profileMenu.style.display === 'block';
@@ -234,14 +237,12 @@
 
     document.addEventListener('click', () => profileMenu.style.display = 'none');
 
-    // Logout button
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('techverse_profile');
       profileMenu.style.display = 'none';
       document.getElementById('mainFrame').src = 'home.html';
     });
 
-    // 🔔 Notification button → Opens notification.html
     notifBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       profileMenu.style.display = 'none';
@@ -249,7 +250,6 @@
       notifCount.style.display = 'none';
     });
 
-    // Search (demo)
     document.getElementById('searchInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
