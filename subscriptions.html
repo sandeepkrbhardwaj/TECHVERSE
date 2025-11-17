@@ -6,42 +6,49 @@
     <title>Document</title>
 
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:Arial, sans-serif;background:#fff;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Arial, sans-serif;background:#fff;}
 
-        main{
-            padding-top:40px;
-            max-width:1200px;
-            margin:auto;
-        }
+    main{
+        padding-top:40px;
+        max-width:1200px;
+        margin:auto;
+    }
 
-        /* GRID: 4 images per row */
-        .courses{
-            display:grid;
-            grid-template-columns: repeat(4, 1fr); /* ⭐ 4 per row */
-            gap:90px;
-            padding:20px;
-            justify-content: space-around;
-        }
+    /* GRID: 3 images per row */
+    .courses{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:40px;
+        padding:20px;
+    }
 
-        .course-box{
-            width:100%; 
-            text-align:center;
-        }
+    .course-box{
+        width:100%; 
+        text-align:center;
+    }
 
-        .course-box img{
-         width:200px;
-            border-radius:5px;
-            object-fit:cover;
+    .course-box img{
+        width:100%;                   /* ⭐ Full width */
+        height:250px;                 /* ⭐ Bigger attractive height */
+        border-radius:10px;           /* ⭐ Smooth edges */
+        object-fit:cover;             /* ⭐ Clean crop */
+        box-shadow:0 4px 10px rgba(0,0,0,0.1);  /* ⭐ Attractive shadow */
+        transition:0.3s;              /* ⭐ Hover effect */
+    }
 
-        }
+    .course-box img:hover{
+        transform:scale(1.03);        /* ⭐ Slight zoom on hover */
+        box-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
 
-        .course-box h2{
-            margin-top:10px;
-            font-size:18px;
-            font-weight:bold;
-        }
-    </style>
+    .course-box h2{
+        margin-top:12px;
+        font-size:20px;
+        font-weight:bold;
+    }
+</style>
+
 </head>
 
 <body>
@@ -51,12 +58,13 @@
             <div class="course-box">
                 <img src="dev1.jpg">
                 <h2>DEVOPS : </h2>
-                <p>DevOps is a culture and practice that combines development and operations to automate workflows, improve collaboration, and deliver high-quality software faster.</p>
+                <i><p>DevOps is a culture and practice that unifies development and operations to automate processes and deliver software faster. It improves collaboration, integrates continuous testing and deployment, and enhances overall efficiency. With DevOps, teams release reliable, high-quality software more frequently and smoothly.</p></i>
             </div>
 
             <div class="course-box">
                 <img src="dev2.jpg">
                 <h2>CYBER SECURITYS</h2>
+                <i><p>Cybersecurity protects computers, networks, and data from digital attacks by preventing unauthorized access, misuse, and damage. It uses tools and practices to detect threats, secure systems, and defend against hackers. Strong cybersecurity ensures privacy, safety, and smooth functioning of technology.</p></i>
             </div>
 
             <div class="course-box">
