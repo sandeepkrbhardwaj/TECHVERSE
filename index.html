@@ -1,133 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Techverse</title>
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:Arial, sans-serif;background:#dce9f7;}
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:Arial, sans-serif; background:#dce9f7; }
 
     /* NAVBAR */
     .navbar{
-      position:fixed;top:0;left:0;right:0;
-      height:64px;background:#071833;color:#fff;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:8px 40px;
+      position:fixed; top:0; left:0; right:0;
+      background:#071833; color:#fff;
+      height:64px;
+      display:flex; align-items:center;
+      justify-content:space-between;
+      padding:0 24px;
       z-index:1000;
     }
 
     .nav-left{
-      display:flex;
-      gap:20px;
-      align-items:center;
-      margin-left:10px;
+      display:flex; gap:12px; align-items:center;
     }
 
-    .logo{height:40px;}
-    .brand{color:white;text-decoration:none;font-size:22px;font-weight:bold;}
-
-    .navbar > div:last-child button{
-      margin-left:16px;
-    }
-
-    .navbar > div:last-child{
-      margin-right:40px;
-    }
+    .logo{ width:40px; height:40px; object-fit:cover; border-radius:6px; }
+    .brand{ color:white; font-size:20px; font-weight:bold; text-decoration:none; }
 
     .btn{
-      background:#0b75da;border:none;padding:8px 14px;
-      color:rgb(247, 241, 241);border-radius:8px;cursor:pointer;font-weight:600;
+      background:#0b75da;
+      border:none; padding:8px 14px;
+      color:white; border-radius:8px;
+      cursor:pointer; font-weight:600;
     }
 
-    /* PAGE */
-    main{
-      padding-top:80px;
-    }
+    /* MAIN */
+    main{ padding-top:80px; }
 
     .layout{
-      max-width:1200px;
-      margin:10px auto 0;
-      padding:0;
-      display:block;
+      max-width:1200px; margin:auto;
     }
 
     .hero{
-      width:110%;
+      width:100%;
       max-width:1200px;
-      height:430px;
-      object-fit:cover;
+      height:auto;
       border-radius:10px;
       display:block;
       margin:auto;
     }
 
-    /* COURSES */
+    /* =============================
+       COURSES – ONE HORIZONTAL ROW
+    ==============================*/
+
     .courses{
       display:flex;
-      justify-content:center;
+      flex-wrap:nowrap;          /* ALL in one line */
       gap:40px;
-      flex-wrap:nowrap;
-      overflow-x:auto;
+      overflow-x:auto;           /* enables horizontal scroll */
+      scroll-behavior:smooth;
+      padding:20px;
       max-width:1200px;
-      margin:30px auto 60px;
-      padding-bottom:10px;
+      margin:30px auto;
+    }
+
+    .courses::-webkit-scrollbar{
+      height:8px;
+    }
+    .courses::-webkit-scrollbar-thumb{
+      background:#b7c5d8;
+      border-radius:10px;
     }
 
     .course-box{
-      width:280px;
+      min-width:300px;           /* keeps boxes same size */
+      flex:0 0 auto;             /* prevent shrinking */
+      background:white;
+      border-radius:14px;
+      padding:14px;
       text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
     }
 
     .course-box img{
       width:100%;
-      border-radius:12px;
+      height:180px;
       object-fit:cover;
+      border-radius:12px;
     }
 
     .course-box h2{
-      margin-top:12px;
       font-size:20px;
-      font-weight:bold;
+      margin-top:12px;
     }
 
-    /* MODAL */
+    /* POPUP */
     #popupModal{
-      display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);
-      justify-content:center;align-items:center;z-index:3000;
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.45);
+      justify-content:center;
+      align-items:center;
+      z-index:3000;
     }
-    #popupModal.show{display:flex;}
+    #popupModal.show{ display:flex; }
 
     #popupDialog{
-      width:95%;max-width:600px;background:rgb(232, 230, 230);border-radius:12px;
-      max-height:90vh;overflow:hidden;position:relative;
-      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      width:95%; max-width:600px;
+      background:#e8e6e6;
+      border-radius:12px;
+      max-height:90vh;
+      overflow:auto;
+      position:relative;
+      padding:20px;
     }
 
     #popupClose{
-      position:absolute;right:12px;top:10px;cursor:pointer;font-size:28px;border:none;background:none;
+      position:absolute; right:12px; top:10px;
+      cursor:pointer; font-size:28px;
+      background:none; border:none;
     }
 
-    #popupBody{padding:20px;}
-
     iframe{
-      width:100%;height:70vh;border:none;border-radius:6px;
+      width:100%; height:70vh;
+      border:none; border-radius:8px;
     }
 
     input{
-      width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:6px;
+      width:100%; padding:12px;
+      margin:10px 0;
+      border:1px solid #ccc;
+      border-radius:6px;
     }
-
   </style>
 </head>
+
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
       <img src="logo1.jpg" class="logo">
-      <a href="index.html" class="brand">Techverse</a>
+      <a class="brand" href="index.html">Techverse</a>
     </div>
 
     <div>
@@ -136,12 +152,12 @@
     </div>
   </nav>
 
-  <!-- MAIN CONTENT -->
   <main>
     <div class="layout">
       <img src="home.png" class="hero">
     </div>
 
+    <!-- COURSES IN ONE SINGLE ROW -->
     <div class="courses">
       <div class="course-box">
         <img src="software-dev.png">
@@ -150,7 +166,7 @@
 
       <div class="course-box">
         <img src="discussion.png">
-        <h2>Full Stacks DEV</h2>
+        <h2>Full Stack DEV</h2>
       </div>
 
       <div class="course-box">
@@ -178,8 +194,8 @@
     const popupBody = document.getElementById("popupBody");
     const closeBtn = document.getElementById("popupClose");
 
-    function openModal(){ modal.classList.add("show"); document.body.style.overflow="hidden"; }
-    function closeModal(){ modal.classList.remove("show"); document.body.style.overflow=""; }
+    function openModal(){ modal.classList.add("show"); }
+    function closeModal(){ modal.classList.remove("show"); }
 
     closeBtn.onclick = closeModal;
     modal.onclick = e => { if(e.target===modal) closeModal(); };
@@ -192,13 +208,13 @@
         <form onsubmit="event.preventDefault(); alert('Logged In!'); closeModal();">
           <input type="email" placeholder="Email" required>
           <input type="password" placeholder="Password" required>
-          <button class='btn' style='width:100%;margin-top:10px;'><a href="login-page.html" alt="text.decoration">Login</a></button>
+          <button class='btn' style='width:100%;margin-top:10px;'>Login</button>
         </form>
       `;
       openModal();
     };
 
-    /* SIGNUP POPUP ---- FIXED */
+    /* SIGNUP POPUP */
     document.getElementById("signupBtn").onclick = function(){
       popupBody.innerHTML = `<iframe src="sign-up.html"></iframe>`;
       openModal();
