@@ -6,9 +6,23 @@
     <title>Rewards</title>
 </head>
 <style>
+    *{background-color: #f2f2f2;}
     h1:hover{color: rgb(66, 0, 248);cursor: pointer;}
+    .course-box img{
+        width:100%;                   /* ⭐ Full width */
+        height:250px;                 /* ⭐ Bigger attractive height */
+        border-radius:10px;           /* ⭐ Smooth edges */
+        object-fit:cover;             /* ⭐ Clean crop */
+        box-shadow:0 4px 10px rgba(0,0,0,0.1);  /* ⭐ Attractive shadow */
+        transition:0.3s;              /* ⭐ Hover effect */
+    }
+
+    .course-box img:hover{
+        transform:scale(1.03);        /* ⭐ Slight zoom on hover */
+        box-shadow:0 6px 20px rgba(0,0,0,0.18);
+    }
 </style>
-<body style="background-color: #f2f2f2;">
+<body class="course-box">
     <h1 style="margin-left: 110px;text-decoration: underline;">
        <b> Rewards</b>
     </h1>
