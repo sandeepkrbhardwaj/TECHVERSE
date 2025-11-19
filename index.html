@@ -219,6 +219,32 @@
       popupBody.innerHTML = `<iframe src="sign-up.html"></iframe>`;
       openModal();
     };
+    // POPUP WHEN CLICKING ANY COURSE IMAGE
+document.querySelectorAll(".course-box img").forEach(img => {
+  img.addEventListener("click", () => {
+    popupBody.innerHTML = `
+      <h2 style="text-align:center;">You Need To Sign Up First</h2>
+     
+      <button class="btn" style="width:100%; margin-top:20px;" onclick="closeModal()">
+        OK
+      </button>
+    `;
+    openModal();
+  });
+});
+// POPUP WHEN CLICKING HOME IMAGE
+document.querySelector(".hero").addEventListener("click", () => {
+  popupBody.innerHTML = `
+    <h2 style="text-align:center;">You Need To Sign Up First</h2>
+   
+    <button class="btn" style="width:100%; margin-top:20px;" onclick="closeModal()">
+      OK
+    </button>
+  `;
+  openModal();
+});
+
+
   </script>
 
 </body>
