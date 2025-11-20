@@ -58,7 +58,7 @@ This research demonstrates that encouraging students to teach is a powerful and 
 <h2><u>Feedback of Students After the Session:</u></h2>
 <section class="video-row">
     <div4>
-        <video width="900" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+        <video width="900" height="320"   style="background-color: black;">
     <source src="main-video.mp4" type="video/mp4">
 </video>
     </div4>
@@ -68,25 +68,25 @@ This research demonstrates that encouraging students to teach is a powerful and 
 
 <div class="video-row">
 
- <video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+ <video width="220" height="320"   style="background-color: black;">
     <source src="video1.mp4" type="video/mp4">
 </video>
 
 
- <video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+ <video width="220" height="320"  style="background-color: black;">
     <source src="video7.mp4" type="video/mp4">
 </video>
 
 
-  <video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+  <video width="220" height="320"   style="background-color: black;">
     <source src="video6.mp4" type="video/mp4">
 </video>
 
- <video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+ <video width="220" height="320"   style="background-color: black;">
     <source src="video8.mp4" type="video/mp4">
 </video>
 
-<video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+<video width="220" height="320"   style="background-color: black;">
     <source src="video10.mp4" type="video/mp4">
 </video>
 
@@ -94,43 +94,66 @@ This research demonstrates that encouraging students to teach is a powerful and 
 </section>
 <section class="video-row">
     <div3>
-    <video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+    <video width="220" height="320"   style="background-color: black;">
     <source src="video9.mp4" type="video/mp4">
 </video>
     </div3>
 
      <div3>
 
-<video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+<video width="220" height="320"   style="background-color: black;">
     <source src="video5.mp4" type="video/mp4">
 </video>
  </div3>
 
   <div3>
-<video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+<video width="220" height="320" style="background-color: black;">
     <source src="video3.mp4" type="video/mp4">
 </video>
  </div3>
 
   <div3>
-<video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+<video width="220" height="320" style="background-color: black;">
     <source src="video11.mp4" type="video/mp4">
 </video>
  </div3>
 
  <div3>
 
-<video width="220" height="320" autoplay="thumbnail.jpg"  style="background-color: black;">
+<video width="220" height="320"   style="background-color: black;">
     <source src="video4.mp4" type="video/mp4">
 </video>
  </div3>
 
 </section>
+<section class="video-row">
+    <div4>
+    <video width="220" height="320"   style="background-color: black;">
+    <source src="video12.mp4" type="video/mp4">
+</video>
+    </div4>
+
+    </section>
+
 <footer style="background: #f2f2f2; padding:15px;  margin-top:30px;margin-left: 60px;">
     <p style="margin:5px 0; font-size:28px; color:#0a0a09;"><strong>Disclaimer:</strong>
         Work in progress — this is a functional prototype, not the final version.
     </p>
 </footer>
+
+<script>
+  // Play video only on hover
+  document.querySelectorAll("video").forEach(video => {
+      video.addEventListener("mouseenter", () => {
+          video.play();
+      });
+
+      video.addEventListener("mouseleave", () => {
+          video.pause();
+          video.currentTime = 0; // Optional: restart from beginning
+      });
+  });
+</script>
 
 
 </body>
