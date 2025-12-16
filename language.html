@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Languages | Techverse</title>
+
+<style>
+/* =================================================
+   RESET – remove default spacing & set base font
+================================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* =================================================
+   PAGE BACKGROUND
+================================================= */
+body{
+  background:#e5e7eb;
+  padding:30px 20px;
+}
+
+/* =================================================
+   DISCLAIMER BOX (TOP MESSAGE)
+================================================= */
+.disclaimer{
+  background:#fef3c7;
+  padding:14px;
+  border-radius:10px;
+  margin-bottom:25px;
+  font-size:16px;
+  font-weight:600;
+  color:#92400e;
+}
+
+/* =================================================
+   HEADER SECTION
+================================================= */
+.header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.header h2{
+  font-size:42px;
+  color:#071833;
+  margin-bottom:15px;
+}
+
+/* =================================================
+   SEARCH BOX
+================================================= */
+.search-box{
+  max-width:420px;
+  margin:0 auto;
+}
+
+.search-box input{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+/* =================================================
+   LANGUAGE GRID
+   - 3 cards per row
+   - Responsive on small screens
+================================================= */
+.language-grid{
+  max-width:1200px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr); /* EXACTLY 3 PER ROW */
+  gap:35px;
+}
+
+/* =================================================
+   LANGUAGE CARD
+================================================= */
+.language-card{
+  background:#ffffff;
+  border-radius:22px;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  transition:all 0.3s ease;
+  position:relative;
+}
+
+.language-card:hover{
+  transform:translateY(-10px) scale(1.04);
+  box-shadow:0 18px 35px rgba(0,0,0,0.22);
+}
+
+/* =================================================
+   LANGUAGE IMAGE
+================================================= */
+.language-card img{
+  width:160px;              /* Increased size */
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:18px;
+  border:4px solid #e5e7eb;
+}
+
+/* =================================================
+   LANGUAGE NAME
+================================================= */
+.language-card span{
+  display:block;
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#071833;
+}
+
+/* =================================================
+   PROGRESS BAR
+================================================= */
+.progress{
+  width:100%;
+  height:10px;
+  background:#e5e7eb;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:#135bec;
+}
+
+/* =================================================
+   LOADING OVERLAY
+================================================= */
+.loader{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+/* Spinner animation */
+.spinner{
+  width:60px;
+  height:60px;
+  border:6px solid #e5e7eb;
+  border-top:6px solid #135bec;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+/* =================================================
+   RESPONSIVE (Mobile)
+================================================= */
+@media(max-width:900px){
+  .language-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .language-grid{
+    grid-template-columns:1fr;
+  }
+  .header h2{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= DISCLAIMER ================= -->
+<div class="disclaimer">
+  ⚠️ Disclaimer: Work in progress — not the final version.
+</div>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <h2>Choose a Programming Language</h2>
+
+  <!-- Search input -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search language...">
+  </div>
+</div>
+
+<!-- ================= LANGUAGE GRID ================= -->
+<div class="language-grid" id="languageGrid">
+
+  <!-- EACH CARD REPRESENTS ONE LANGUAGE -->
+
+  <div class="language-card" data-name="java" onclick="goMatch()">
+    <img src="js.jpg">
+    <span>Java</span>
+    <div class="progress"><div class="progress-fill" style="width:70%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="python" onclick="goMatch()">
+    <img src="python.jpg">
+    <span>Python</span>
+    <div class="progress"><div class="progress-fill" style="width:60%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="c" onclick="goMatch()">
+    <img src="c.jpg">
+    <span>C</span>
+    <div class="progress"><div class="progress-fill" style="width:40%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="javascript" onclick="goMatch()">
+    <img src="js1.jpg">
+    <span>JavaScript</span>
+    <div class="progress"><div class="progress-fill" style="width:65%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="c++" onclick="goMatch()">
+    <img src="cpp.jpg">
+    <span>C++</span>
+    <div class="progress"><div class="progress-fill" style="width:30%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="kotlin" onclick="goMatch()">
+    <img src="k.jpg">
+    <span>Kotlin</span>
+    <div class="progress"><div class="progress-fill" style="width:20%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="rust" onclick="goMatch()">
+    <img src="r.jpg">
+    <span>Rust</span>
+    <div class="progress"><div class="progress-fill" style="width:15%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="swift" onclick="goMatch()">
+    <img src="bird.jpg">
+    <span>Swift</span>
+    <div class="progress"><div class="progress-fill" style="width:35%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="go" onclick="goMatch()">
+    <img src="go.jpg">
+    <span>Go</span>
+    <div class="progress"><div class="progress-fill" style="width:25%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="php" onclick="goMatch()">
+    <img src="php.jpg">
+    <span>PHP</span>
+    <div class="progress"><div class="progress-fill" style="width:45%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="ruby" onclick="goMatch()">
+    <img src="ruby.png">
+    <span>Ruby</span>
+    <div class="progress"><div class="progress-fill" style="width:20%"></div></div>
+  </div>
+
+  <div class="language-card" data-name="typescript" onclick="goMatch()">
+    <img src="ts.png">
+    <span>TypeScript</span>
+    <div class="progress"><div class="progress-fill" style="width:50%"></div></div>
+  </div>
+
+</div>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader">
+  <div class="spinner"></div>
+</div>
+
+<script>
+/* =================================================
+   SEARCH FILTER FUNCTION
+================================================= */
+document.getElementById("searchInput").addEventListener("keyup", function(){
+  const value = this.value.toLowerCase();
+  document.querySelectorAll(".language-card").forEach(card=>{
+    card.style.display = card.dataset.name.includes(value) ? "block" : "none";
+  });
+});
+
+/* =================================================
+   LOADING + NAVIGATION
+================================================= */
+function goMatch(){
+  const loader = document.getElementById("loader");
+  loader.style.display = "flex";
+
+  setTimeout(()=>{
+    window.location.href = "matches.html";  // iframe friendly
+  }, 1200);
+}
+</script>
+
+</body>
+</html>

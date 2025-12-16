@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial, sans-serif;
+  background:transparent;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.popup{
+  width:100%;
+  padding:30px;
+}
+
+h2{text-align:center;color:#1e3a8a;margin-bottom:6px}
+p{text-align:center;color:#475569;margin-bottom:20px;font-size:14px}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#2563eb;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.small{
+  margin-top:14px;
+  text-align:center;
+  font-size:14px;
+  color:#475569;
+}
+
+.small a{
+  cursor:pointer;
+  color:#2563eb;
+  font-weight:600;
+  text-decoration:none;
+}
+.small a:hover{text-decoration:underline}
+</style>
+</head>
+
+<body>
+
+<div class="popup">
+  <h2>Welcome Back</h2>
+  <p>Login to continue learning</p>
+
+  <input type="email" placeholder="Email Address">
+  <input type="password" placeholder="Password">
+
+  <!-- ✅ LOGIN -->
+  <button onclick="login()">Log In</button>
+
+  <div class="small">
+    Don’t have an account?
+    <a onclick="goSignup()">Create account</a>
+  </div>
+</div>
+
+<script>
+function goSignup(){
+  if(window.parent && window.parent.openSignup){
+    window.parent.openSignup();
+  }
+}
+
+/* ✅ AFTER LOGIN → FULL PAGE */
+function login(){
+  window.parent.location.href = "afterlogin.html";
+}
+</script>
+
+</body>
+</html>

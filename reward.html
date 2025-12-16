@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewards | Techverse</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= PAGE ================= */
+body{
+  background:#f2f2f2;
+  padding:30px 20px;
+  color:#0f172a;
+}
+
+/* ================= HEADER ================= */
+.header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.header h1{
+  font-size:42px;
+  text-decoration:underline;
+}
+
+/* ================= TOTAL COINS ================= */
+.total-coins{
+  max-width:420px;
+  margin:0 auto 40px;
+  background:#071833;
+  color:#fff;
+  padding:22px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.total-coins span{
+  font-size:36px;
+  font-weight:bold;
+  display:block;
+  margin-top:6px;
+}
+
+/* ================= GRID ================= */
+.rewards{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr); /* 3 PER ROW */
+  gap:30px;
+}
+
+/* ================= CARD ================= */
+.reward-card{
+  background:#ffffff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 22px rgba(0,0,0,0.12);
+  transition:0.3s;
+  text-align:center;
+}
+
+.reward-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* ================= IMAGE ================= */
+.reward-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+/* ================= CONTENT ================= */
+.reward-content{
+  padding:16px;
+}
+
+.reward-content h3{
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.coin{
+  font-size:26px;
+  font-weight:bold;
+  color:#135bec;
+  margin-bottom:12px;
+}
+
+/* ================= BUTTON ================= */
+.reward-content button{
+  padding:10px 18px;
+  background:#135bec;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.reward-content button:disabled{
+  background:#94a3b8;
+  cursor:not-allowed;
+}
+
+.reward-content button:hover:not(:disabled){
+  background:#071833;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .rewards{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .rewards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <h1>Rewards</h1>
+</div>
+
+<!-- ================= TOTAL COINS ================= -->
+<div class="total-coins">
+  Your Total Coins
+  <span id="coinCount">0</span>
+</div>
+
+<!-- ================= REWARD GRID ================= -->
+<div class="rewards">
+
+<!-- CARD TEMPLATE -->
+<!-- data-cost = coins needed -->
+
+<div class="reward-card">
+<img src="reward1.jpg">
+<div class="reward-content">
+<h3>Daily Bonus</h3>
+<div class="coin">🪙 10</div>
+<button onclick="redeem(this,10)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward2.jpg">
+<div class="reward-content">
+<h3>Starter Gift</h3>
+<div class="coin">🪙 20</div>
+<button onclick="redeem(this,20)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward3.jpg">
+<div class="reward-content">
+<h3>Skill Booster</h3>
+<div class="coin">🪙 30</div>
+<button onclick="redeem(this,30)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward4.jpg">
+<div class="reward-content">
+<h3>Bronze Pack</h3>
+<div class="coin">🪙 40</div>
+<button onclick="redeem(this,40)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward5.jpg">
+<div class="reward-content">
+<h3>Learning Pass</h3>
+<div class="coin">🪙 50</div>
+<button onclick="redeem(this,50)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward6.jpg">
+<div class="reward-content">
+<h3>Silver Pack</h3>
+<div class="coin">🪙 60</div>
+<button onclick="redeem(this,60)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward7.jpg">
+<div class="reward-content">
+<h3>Pro Unlock</h3>
+<div class="coin">🪙 70</div>
+<button onclick="redeem(this,70)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward8.jpg">
+<div class="reward-content">
+<h3>Premium Boost</h3>
+<div class="coin">🪙 80</div>
+<button onclick="redeem(this,80)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward9.jpg">
+<div class="reward-content">
+<h3>Gold Pack</h3>
+<div class="coin">🪙 90</div>
+<button onclick="redeem(this,90)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward10.jpg">
+<div class="reward-content">
+<h3>Elite Access</h3>
+<div class="coin">🪙 100</div>
+<button onclick="redeem(this,100)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward11.jpg">
+<div class="reward-content">
+<h3>Master Reward</h3>
+<div class="coin">🪙 120</div>
+<button onclick="redeem(this,120)">Redeem</button>
+</div>
+</div>
+
+<div class="reward-card">
+<img src="reward12.jpg">
+<div class="reward-content">
+<h3>Legendary Gift</h3>
+<div class="coin">🪙 150</div>
+<button onclick="redeem(this,150)">Redeem</button>
+</div>
+</div>
+
+</div>
+
+<script>
+/* ================= COIN SYSTEM ================= */
+
+// Initialize coins (default 250)
+let coins = localStorage.getItem("techverseCoins");
+coins = coins ? parseInt(coins) : 250;
+
+// Update UI
+const coinDisplay = document.getElementById("coinCount");
+coinDisplay.innerText = coins;
+
+/* ================= CHECK BUTTON STATES ================= */
+function updateButtons(){
+  document.querySelectorAll(".reward-content button").forEach(btn=>{
+    const cost = parseInt(btn.innerText.replace(/\D/g,""));
+    btn.disabled = coins < cost;
+  });
+}
+updateButtons();
+
+/* ================= REDEEM FUNCTION ================= */
+function redeem(button, cost){
+  if(coins < cost){
+    alert("❌ Not enough coins!");
+    return;
+  }
+
+  coins -= cost;
+  localStorage.setItem("techverseCoins", coins);
+
+  // Animate coin update
+  coinDisplay.innerText = coins;
+
+  button.disabled = true;
+  button.innerText = "Redeemed";
+
+  alert("✅ Reward redeemed successfully!");
+}
+</script>
+
+</body>
+</html>

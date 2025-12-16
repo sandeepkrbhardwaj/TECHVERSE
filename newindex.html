@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techverse - The Future of Learning</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ================= BODY ================= */
+body{
+  font-family:Arial, sans-serif;
+  background:#dce9f7;
+  color:#0f172a;
+}
+
+/* ================= CONTAINER ================= */
+.page-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ================= NAVBAR ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:64px;
+  background:#ffffff;
+  border-bottom:1px solid #c7d7ee;
+  z-index:1000;
+}
+
+.nav-inner{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+  color:#1e3a8a;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:#0f172a;
+  text-decoration:none;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#2563eb;
+}
+
+.auth-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.btn-secondary{
+  background:#eef4fb;
+  color:#1e3a8a;
+  border:1px solid #2563eb;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* ================= MAIN ================= */
+main{
+  padding-top:90px;
+}
+
+/* ================= HERO ================= */
+.hero{
+  padding:50px 0;
+}
+
+.hero-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.hero-text{
+  width:50%;
+}
+
+.hero-text h1{
+  font-size:48px;
+  margin-bottom:16px;
+  color:#1e3a8a;
+}
+
+.hero-text p{
+  font-size:18px;
+  margin-bottom:24px;
+  color:#334155;
+}
+
+.hero-img{
+  width:45%;
+  border-radius:16px;
+}
+
+/* ================= STATS ================= */
+.stats{
+  padding:30px 0;
+}
+
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  text-align:center;
+}
+
+.stat-box{
+  background:#ffffff;
+  border:1px solid #c7d7ee;
+  padding:24px;
+  border-radius:14px;
+}
+
+/* ================= FEATURES ================= */
+.features{
+  padding:50px 0;
+  text-align:center;
+}
+
+.features h2{
+  font-size:36px;
+  margin-bottom:10px;
+  color:#1e3a8a;
+}
+
+.features p{
+  margin-bottom:40px;
+  color:#475569;
+}
+
+.feature-cards{
+  display:flex;
+  gap:30px;
+}
+
+.card{
+  background:#ffffff;
+  padding:26px;
+  border-radius:14px;
+  flex:1;
+  border:1px solid #c7d7ee;
+}
+
+/* ================= LANGUAGES ================= */
+.languages{
+  padding:60px 0;
+  background:#e6f0fb;
+}
+
+.languages h2{
+  font-size:36px;
+  margin-bottom:6px;
+}
+
+.lang-sub{
+  font-size:18px;
+  margin-bottom:16px;
+}
+
+.lang-search{
+  width:260px;
+  padding:6px 8px;
+  border:2px solid #0f172a;
+  border-radius:4px;
+  margin-bottom:30px;
+}
+
+.lang-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.lang-card{
+  background:#ffffff;
+  padding:36px;
+  border-radius:20px;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  color:#1e3a8a;
+}
+
+/* ================= TEAM ================= */
+.team{
+  padding:60px 0;
+  text-align:center;
+}
+
+.team h2{
+  font-size:36px;
+  margin-bottom:40px;
+}
+
+.team-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.team-card{
+  background:#ffffff;
+  border:1px solid #c7d7ee;
+  padding:24px;
+  border-radius:14px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  padding:30px 0;
+  background:#eef4fb;
+  border-top:1px solid #c7d7ee;
+}
+
+/* ================= POPUP (MODAL) ================= */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+}
+
+.modal-box{
+  width:420px;
+  height:540px;
+  background:#ffffff;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+
+.modal iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-size:22px;
+  cursor:pointer;
+  z-index:10;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero-text,.hero-img{
+    width:100%;
+  }
+  .feature-cards{
+    flex-direction:column;
+  }
+  .stats-row,.lang-grid,.team-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px){
+  .stats-row,.lang-grid,.team-row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+  <div class="page-container nav-inner">
+    <div class="logo">Techverse</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#languages">Languages</a>
+      <a href="#team">Team</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="btn-primary" onclick="openSignup()">Sign Up</button>
+      <button class="btn-secondary" onclick="openLogin()">Log In</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="page-container hero-inner">
+    <div class="hero-text">
+      <h1>The Future of Learning is Here</h1>
+      <p>Learn smarter. Explore technologies. Build real skills.</p>
+      <button class="btn-primary" onclick="openSignup()">Get Started</button>
+    </div>
+    <img src="home.png" class="hero-img" alt="Learning">
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="page-container stats-row">
+    <div class="stat-box"><h3>50+</h3><p>Learning Paths</p></div>
+    <div class="stat-box"><h3>100+</h3><p>Interactive Modules</p></div>
+    <div class="stat-box"><h3>AI Powered</h3><p>Smart Guidance</p></div>
+    <div class="stat-box"><h3>24×7</h3><p>Learn Anytime</p></div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="features">
+  <div class="page-container">
+    <h2>Learning, Reimagined with AI</h2>
+    <p>Designed for curiosity and growth.</p>
+    <div class="feature-cards">
+      <div class="card"><h3>AI Learning Companion</h3><p>Personalized guidance</p></div>
+      <div class="card"><h3>Learn Without Limits</h3><p>Anytime learning</p></div>
+      <div class="card"><h3>Learn by Doing</h3><p>Hands-on practice</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANGUAGES ================= -->
+<section id="languages" class="languages">
+  <div class="page-container">
+    <h2>Select Your Language</h2>
+    <p class="lang-sub">Choose a technology to begin</p>
+    <input class="lang-search" placeholder="Search language">
+    <div class="lang-grid">
+      <div class="lang-card">Python</div>
+      <div class="lang-card">Java</div>
+      <div class="lang-card">JavaScript</div>
+      <div class="lang-card">C++</div>
+      <div class="lang-card">HTML</div>
+      <div class="lang-card">CSS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section id="team" class="team">
+  <div class="page-container">
+    <h2>Meet the Innovators</h2>
+    <div class="team-row">
+      <div class="team-card"><h4>Pragya Pal</h4><p>Team Lead</p></div>
+      <div class="team-card"><h4>Ayush Jha</h4><p>Research</p></div>
+      <div class="team-card"><h4>Sandeep Kr. Bhardwaj</h4><p>Front-end</p></div>
+      <div class="team-card"><h4>Farhan Mallik</h4><p>Design</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="page-container">
+    © 2024 Techverse
+  </div>
+</footer>
+
+<!-- ================= POPUP ================= -->
+<div id="popup" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closePopup()">×</span>
+    <iframe id="popupFrame"></iframe>
+  </div>
+</div>
+
+<script>
+const popup = document.getElementById("popup");
+const frame = document.getElementById("popupFrame");
+
+function openSignup(){
+  frame.src = "newsignup.html";
+  popup.style.display = "flex";
+}
+
+function openLogin(){
+  frame.src = "newlogin.html";
+  popup.style.display = "flex";
+}
+
+function closePopup(){
+  popup.style.display = "none";
+  frame.src = "";
+}
+
+/* 👇 expose functions to iframe */
+window.openSignup = openSignup;
+window.openLogin = openLogin;
+window.closePopup = closePopup;
+</script>
+
+
+</body>
+</html>

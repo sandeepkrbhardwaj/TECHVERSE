@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Learning | Techverse</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  background:#f2f2f2;
+  padding:30px;
+  color:#0f172a;
+}
+
+/* ================= HEADER ================= */
+.header{
+  text-align:center;
+  margin-bottom:25px;
+}
+.header h1{
+  font-size:42px;
+  color:#071833;
+}
+.header p{
+  color:#475569;
+  margin-top:8px;
+}
+
+/* ================= SEARCH BAR ================= */
+.search-box{
+  max-width:600px;
+  margin:20px auto 40px;
+}
+.search-box input{
+  width:100%;
+  padding:14px 18px;
+  font-size:18px;
+  border-radius:12px;
+  border:2px solid #cbd5e1;
+  outline:none;
+}
+.search-box input:focus{
+  border-color:#2563eb;
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title{
+  font-size:32px;
+  margin:40px 0 20px;
+  padding-left:20px;
+  color:#071833;
+}
+
+/* ================= GRID (3 IN 1) ================= */
+.grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+}
+
+/* ================= CARD ================= */
+.card{
+  background:#ffffff;
+  border-radius:16px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.12);
+  overflow:hidden;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card p{
+  padding:14px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <h1>Quick Learning</h1>
+  <p>Search and learn concepts instantly</p>
+</div>
+
+<!-- ================= SEARCH ================= -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search topic (HTML, CSS, JS...)">
+</div>
+
+<!-- ================= HTML ================= -->
+<h2 class="section-title">HTML</h2>
+<div class="grid">
+
+<div class="card"><img src="h1.jpeg"><p>H1 Tag</p></div>
+<div class="card"><img src="p.jpeg"><p>Paragraph</p></div>
+<div class="card"><img src="img.jpeg"><p>Image Tag</p></div>
+<div class="card"><img src="br.jpeg"><p>Break Tag</p></div>
+<div class="card"><img src="div.jpeg"><p>Div Tag</p></div>
+<div class="card"><img src="span.png"><p>Span Tag</p></div>
+<div class="card"><img src="anchor.png"><p>Anchor Tag</p></div>
+<div class="card"><img src="list.png"><p>List Tag</p></div>
+<div class="card"><img src="table.png"><p>Table</p></div>
+<div class="card"><img src="form.png"><p>Form</p></div>
+<div class="card"><img src="input.png"><p>Input</p></div>
+<div class="card"><img src="video.png"><p>Video</p></div>
+
+</div>
+
+<!-- ================= CSS ================= -->
+<h2 class="section-title">CSS</h2>
+<div class="grid">
+
+<div class="card"><img src="color.png"><p>Color</p></div>
+<div class="card"><img src="background.png"><p>Background</p></div>
+<div class="card"><img src="border.jpeg"><p>Border</p></div>
+<div class="card"><img src="margin.jpeg"><p>Margin</p></div>
+<div class="card"><img src="padding.jpeg"><p>Padding</p></div>
+<div class="card"><img src="width.jpeg"><p>Width</p></div>
+<div class="card"><img src="height.png"><p>Height</p></div>
+<div class="card"><img src="flex.png"><p>Flexbox</p></div>
+<div class="card"><img src="grid.png"><p>Grid</p></div>
+<div class="card"><img src="position.png"><p>Position</p></div>
+<div class="card"><img src="flow.png"><p>Overflow</p></div>
+<div class="card"><img src="z.png"><p>Z-Index</p></div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<h2 class="section-title">JavaScript</h2>
+<div class="grid">
+
+<div class="card"><img src="log.png"><p>console.log()</p></div>
+<div class="card"><img src="var.jpeg"><p>var</p></div>
+<div class="card"><img src="let.jpeg"><p>let</p></div>
+<div class="card"><img src="const.jpeg"><p>const</p></div>
+<div class="card"><img src="function.png"><p>Functions</p></div>
+<div class="card"><img src="return.jpeg"><p>Return</p></div>
+<div class="card"><img src="if.png"><p>If Else</p></div>
+<div class="card"><img src="loops.png"><p>Loops</p></div>
+<div class="card"><img src="array.png"><p>Arrays</p></div>
+<div class="card"><img src="objects.png"><p>Objects</p></div>
+<div class="card"><img src="events.png"><p>Events</p></div>
+<div class="card"><img src="dom.png"><p>DOM</p></div>
+
+</div>
+
+<!-- ================= SEARCH SCRIPT ================= -->
+<script>
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", () => {
+  const value = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(value) ? "block" : "none";
+  });
+});
+</script>
+
+</body>
+</html>

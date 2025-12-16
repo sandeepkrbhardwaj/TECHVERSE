@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techverse | Mentor Match</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  min-height:100vh;
+  padding:30px;
+}
+
+/* ================= HEADING ================= */
+h2{
+  text-align:center;
+  color:#1e3a8a;
+  font-size:34px;
+  margin-bottom:30px;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* ================= INPUT BOXES ================= */
+.row{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.box{
+  width:30%;
+  min-width:260px;
+  background:#ffffff;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  text-align:center;
+}
+
+.box h3{
+  color:#2563eb;
+  margin-bottom:15px;
+}
+
+select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  font-size:16px;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+  display:block;
+  margin:35px auto;
+  padding:16px 45px;
+  background:#2563eb;
+  color:white;
+  font-size:18px;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#1e40af;
+  transform:scale(1.04);
+}
+
+/* ================= RESULTS ================= */
+#resultsPage{
+  display:none;
+}
+
+.result-box{
+  max-width:900px;
+  margin:30px auto;
+}
+
+/* ================= MENTOR CARD ================= */
+.mentor-card{
+  background:#1e3a8a;
+  color:white;
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.mentor-info strong{
+  font-size:20px;
+}
+
+.mentor-info p{
+  margin-top:5px;
+  font-size:14px;
+  opacity:0.9;
+}
+
+.mentor-card button{
+  padding:12px 22px;
+  background:#22c55e;
+  color:white;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+/* ================= VIDEO POPUP ================= */
+#videoPopup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+#root{
+  width:90%;
+  height:90%;
+  background:#000;
+  border-radius:18px;
+}
+
+#closeCall{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:red;
+  color:white;
+  padding:10px 22px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HOME PAGE ================= -->
+<div id="homePage" class="container">
+  <h2>Peer Mentor Matching</h2>
+
+  <div class="row">
+    <div class="box">
+      <h3>I HAVE SKILL</h3>
+      <select id="skillHave">
+        <option value="">Select Skill</option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JavaScript</option>
+        <option>Python</option>
+        <option>Java</option>
+      </select>
+    </div>
+
+    <div class="box">
+      <h3>I WANT TO LEARN</h3>
+      <select id="skillNeed">
+        <option value="">Select Skill</option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JavaScript</option>
+        <option>Python</option>
+        <option>Java</option>
+      </select>
+    </div>
+
+    <div class="box">
+      <h3>TIME PREFERRED</h3>
+      <select id="timePref">
+        <option value="">Select Time</option>
+        <option>Morning</option>
+        <option>Afternoon</option>
+        <option>Evening</option>
+        <option>Weekend</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn" onclick="findMentors()">Find Mentors</button>
+</div>
+
+<!-- ================= RESULTS PAGE ================= -->
+<div id="resultsPage">
+  <h2>Suggested Mentors</h2>
+  <div id="result" class="result-box"></div>
+  <button class="btn" onclick="goBack()">⬅ Back</button>
+</div>
+
+<!-- ================= VIDEO CALL ================= -->
+<div id="videoPopup">
+  <button id="closeCall" onclick="closeCall()">Close</button>
+  <div id="root"></div>
+</div>
+
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+
+<script>
+/* ================= MENTOR DATABASE ================= */
+const mentors = [
+  {name:"Aarav", skill:"HTML", rating:4.8},
+  {name:"Riya", skill:"HTML", rating:4.6},
+  {name:"Karan", skill:"HTML", rating:4.5},
+
+  {name:"Neha", skill:"CSS", rating:4.7},
+  {name:"Pooja", skill:"CSS", rating:4.6},
+  {name:"Amit", skill:"CSS", rating:4.4},
+
+  {name:"Rahul", skill:"JavaScript", rating:4.9},
+  {name:"Suman", skill:"JavaScript", rating:4.7},
+  {name:"Dev", skill:"JavaScript", rating:4.6},
+
+  {name:"Ankit", skill:"Python", rating:4.8},
+  {name:"Meena", skill:"Python", rating:4.6},
+  {name:"Vivek", skill:"Python", rating:4.5},
+
+  {name:"Rohit", skill:"Java", rating:4.7},
+  {name:"Sneha", skill:"Java", rating:4.6},
+  {name:"Nikhil", skill:"Java", rating:4.5},
+];
+
+/* ================= FIND MENTORS ================= */
+function findMentors(){
+  const skill = skillNeed.value;
+  const time = timePref.value;
+
+  if(!skill || !time){
+    alert("Please select skill and time");
+    return;
+  }
+
+  homePage.style.display="none";
+  resultsPage.style.display="block";
+  result.innerHTML="";
+
+  const matched = mentors.filter(m => m.skill === skill).slice(0,3);
+
+  matched.forEach(m => {
+    const div = document.createElement("div");
+    div.className = "mentor-card";
+    div.innerHTML = `
+      <div class="mentor-info">
+        <strong>${m.name}</strong>
+        <p>Skill: ${m.skill}</p>
+        <p>⭐ Rating: ${m.rating}</p>
+        <p>⏰ Preferred Time: ${time}</p>
+      </div>
+      <button onclick="startCall('${m.name}')">Video Call</button>
+    `;
+    result.appendChild(div);
+  });
+}
+
+/* ================= VIDEO CALL ================= */
+function startCall(room){
+  videoPopup.style.display="flex";
+
+  const appID = 805685182;
+  const appSign = "9a058a4eed9a49a75e99c108574a49";
+
+  const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+    appID,
+    appSign,
+    room + Date.now(),
+    "user" + Date.now(),
+    "Learner"
+  );
+
+  const zp = ZegoUIKitPrebuilt.create(kitToken);
+  zp.joinRoom({
+    container: document.getElementById("root"),
+    scenario: { mode: ZegoUIKitPrebuilt.VideoConference }
+  });
+}
+
+/* ================= CLOSE CALL ================= */
+function closeCall(){
+  videoPopup.style.display="none";
+  root.innerHTML="";
+}
+
+/* ================= BACK ================= */
+function goBack(){
+  resultsPage.style.display="none";
+  homePage.style.display="block";
+}
+</script>
+
+</body>
+</html>

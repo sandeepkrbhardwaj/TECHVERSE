@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help & Support | Techverse</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  background:#f6f9fb;
+  color:#0f172a;
+  padding:30px;
+}
+
+/* ================= HEADER ================= */
+.header{
+  max-width:1000px;
+  margin:0 auto 30px;
+  background:#ffffff;
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.header h1{
+  font-size:38px;
+  color:#0b3b6f;
+  margin-bottom:10px;
+}
+
+.header p{
+  color:#475569;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* ================= SECTION ================= */
+.section{
+  max-width:1000px;
+  margin:30px auto;
+  background:#ffffff;
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.section h2{
+  color:#0b3b6f;
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+/* ================= FAQ ================= */
+.faq{
+  border-bottom:1px solid #e5e7eb;
+  padding:15px 0;
+  cursor:pointer;
+}
+
+.faq h3{
+  font-size:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.faq p{
+  display:none;
+  margin-top:10px;
+  color:#475569;
+  font-weight:600;
+}
+
+/* ================= CONTACT FORM ================= */
+form{
+  display:grid;
+  gap:16px;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
+  font-size:15px;
+}
+
+textarea{
+  resize:none;
+  height:120px;
+}
+
+button{
+  background:#0b3b6f;
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#082b52;
+}
+
+/* ================= SUCCESS MESSAGE ================= */
+.success{
+  display:none;
+  margin-top:15px;
+  color:green;
+  font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  text-align:center;
+  margin-top:40px;
+  font-size:14px;
+  color:#64748b;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:600px){
+  .header h1{font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <h1>Help & Support</h1>
+  <p>We’re here to help you learn without interruption</p>
+</div>
+
+<!-- ================= FAQ SECTION ================= -->
+<div class="section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <h3>How do I start learning? <span>+</span></h3>
+    <p>Select a language or topic from the dashboard and begin learning instantly.</p>
+  </div>
+
+  <div class="faq">
+    <h3>Is Techverse free to use? <span>+</span></h3>
+    <p>Yes, Techverse is free for learners during the prototype phase.</p>
+  </div>
+
+  <div class="faq">
+    <h3>How does peer learning work? <span>+</span></h3>
+    <p>You learn a topic and then teach others, improving retention and confidence.</p>
+  </div>
+
+  <div class="faq">
+    <h3>How do rewards work? <span>+</span></h3>
+    <p>You earn points by learning, teaching, and helping other users.</p>
+  </div>
+</div>
+
+<!-- ================= CONTACT SECTION ================= -->
+<div class="section">
+  <h2>Contact Support</h2>
+
+  <form id="supportForm">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Describe your issue..." required></textarea>
+    <button type="submit">Submit Request</button>
+  </form>
+
+  <div class="success" id="successMsg">
+    ✔ Your request has been submitted successfully.
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+  © <span id="year"></span> Techverse • Support Team
+</div>
+
+<script>
+/* YEAR */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* FAQ TOGGLE */
+document.querySelectorAll(".faq").forEach(faq => {
+  faq.addEventListener("click", () => {
+    const p = faq.querySelector("p");
+    const sign = faq.querySelector("span");
+    const open = p.style.display === "block";
+
+    p.style.display = open ? "none" : "block";
+    sign.textContent = open ? "+" : "−";
+  });
+});
+
+/* FORM SUBMIT */
+document.getElementById("supportForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("successMsg").style.display = "block";
+  this.reset();
+});
+</script>
+
+</body>
+</html>

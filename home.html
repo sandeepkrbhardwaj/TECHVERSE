@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Techverse — Smart Tech Skill Exchange</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f6f9fb;
+  color:#111827;
+  line-height:1.6;
+}
+
+/* ================= HERO ================= */
+.hero{
+  max-width:1400px;
+  background:#ffffff;
+  margin:40px auto;
+  padding:50px 30px;
+  text-align:center;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(56,76,121,0.15);
+}
+
+.hero h1{
+  font-size:46px;
+  color:#0b3b6f;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:900px;
+  margin:0 auto 30px;
+  font-size:18px;
+  color:#334155;
+  font-weight:600;
+}
+
+.hero img{
+  max-width:100%;
+  border-radius:14px;
+  margin-bottom:30px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cta-btn{
+  display:inline-block;
+  background:#0b3b6f;
+  color:#fff;
+  padding:15px 30px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:bold;
+}
+.cta-btn:hover{background:#082b52}
+
+/* ================= SECTION ================= */
+.section{
+  max-width:1200px;
+  margin:70px auto;
+  background:#ffffff;
+  padding:50px 35px;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(15,23,42,0.1);
+}
+
+.section h2{
+  text-align:center;
+  font-size:36px;
+  color:#0b3b6f;
+  margin-bottom:20px;
+}
+
+.section p{
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+  font-size:17px;
+  color:#334155;
+  font-weight:600;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:40px;
+}
+
+.box{
+  background:#f8fafc;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+  text-align:center;
+}
+.box h3{
+  font-size:22px;
+  color:#0b3b6f;
+  margin-bottom:10px;
+}
+.box p{
+  font-size:15px;
+  color:#475569;
+}
+
+/* ================= STEPS ================= */
+.steps{
+  max-width:900px;
+  margin:40px auto 0;
+}
+.step{
+  background:#f8fafc;
+  padding:18px 22px;
+  border-radius:12px;
+  margin-bottom:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  font-weight:600;
+}
+
+/* ================= STATS (ANIMATED) ================= */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  margin-top:40px;
+}
+
+.stat{
+  background:#f8fafc;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.stat h3{
+  font-size:42px;
+  color:#0b3b6f;
+}
+
+.stat p{
+  font-size:14px;
+  color:#475569;
+  font-weight:600;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px 0;
+  font-size:14px;
+  color:#64748b;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .hero h1{font-size:32px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Smart Tech Skills. Clean Learning. Better Growth.</h1>
+  <img src="acp.png" alt="Learning comparison">
+  <p>
+    Techverse is a collaborative learning platform where learners grow faster
+    by learning, practicing, and teaching together.
+  </p>
+  <a href="language.html" class="cta-btn">Start Learning</a>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <h2>How Techverse Works</h2>
+  <p>Simple steps designed for real skill growth.</p>
+
+  <div class="grid">
+    <div class="box"><h3>Learn</h3><p>Understand core concepts clearly.</p></div>
+    <div class="box"><h3>Practice</h3><p>Apply learning with peers.</p></div>
+    <div class="box"><h3>Teach</h3><p>Teach others to master skills.</p></div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section">
+  <h2>Your Learning Journey</h2>
+  <p>Step-by-step progress.</p>
+
+  <div class="steps">
+    <div class="step">📌 Choose a skill</div>
+    <div class="step">📌 Learn fundamentals</div>
+    <div class="step">📌 Practice with peers</div>
+    <div class="step">📌 Teach & earn points</div>
+    <div class="step">📌 Track growth</div>
+  </div>
+</section>
+
+<!-- ANIMATED STATS -->
+<section class="section" id="stats">
+  <h2>Our Growing Impact</h2>
+  <p>Live growth powered by learners.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <h3 class="counter" data-target="50">0</h3>
+      <p>Learning Topics</p>
+    </div>
+    <div class="stat">
+      <h3 class="counter" data-target="120">0</h3>
+      <p>Active Learners</p>
+    </div>
+    <div class="stat">
+      <h3 class="counter" data-target="350">0</h3>
+      <p>Skill Exchanges</p>
+    </div>
+    <div class="stat">
+      <h3 class="counter" data-target="24">0</h3>
+      <p>Hours Access</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="hero">
+  <h1>Start Your Learning Journey Today</h1>
+  <p>Learn. Teach. Grow — together.</p>
+  <a href="language.html" class="cta-btn">Explore Skills</a>
+</section>
+
+<footer>
+  © <span id="year"></span> Techverse • All rights reserved
+</footer>
+
+<script>
+/* YEAR */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* COUNTER ANIMATION */
+const counters = document.querySelectorAll('.counter');
+let started = false;
+
+function startCounter(){
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const speed = target / 80;
+
+    const update = () => {
+      count += speed;
+      if(count < target){
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+}
+
+window.addEventListener("scroll", () => {
+  const section = document.getElementById("stats");
+  const pos = section.getBoundingClientRect().top;
+  if(pos < window.innerHeight && !started){
+    started = true;
+    startCounter();
+  }
+});
+</script>
+
+</body>
+</html>

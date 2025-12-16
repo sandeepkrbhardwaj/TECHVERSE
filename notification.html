@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications | Techverse</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  background:#f4f6fb;
+  padding:30px;
+  color:#0f172a;
+}
+
+/* ================= PAGE TITLE ================= */
+.page-title{
+  font-size:32px;
+  font-weight:bold;
+  color:#0b3b6f;
+  margin-bottom:20px;
+}
+
+/* ================= NOTIFICATION CONTAINER ================= */
+.notifications{
+  max-width:900px;
+  margin:auto;
+}
+
+/* ================= CARD ================= */
+.notification{
+  background:#ffffff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom:18px;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  transition:0.2s;
+}
+
+.notification:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* ================= ICON ================= */
+.icon{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#e0ebff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+}
+
+/* ================= CONTENT ================= */
+.content h3{
+  font-size:18px;
+  margin-bottom:6px;
+  color:#0b3b6f;
+}
+
+.content p{
+  font-size:15px;
+  color:#475569;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.time{
+  font-size:13px;
+  color:#64748b;
+}
+
+/* ================= EMPTY ================= */
+.empty{
+  text-align:center;
+  padding:40px;
+  color:#64748b;
+  font-size:16px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:600px){
+  .page-title{font-size:24px;}
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="page-title">Notifications</h1>
+
+<div class="notifications">
+
+  <!-- Notification 1 -->
+  <div class="notification">
+    <div class="icon">🎉</div>
+    <div class="content">
+      <h3>Welcome to Techverse!</h3>
+      <p>You have successfully joined the Techverse learning platform.</p>
+      <div class="time">Just now</div>
+    </div>
+  </div>
+
+  <!-- Notification 2 -->
+  <div class="notification">
+    <div class="icon">🏆</div>
+    <div class="content">
+      <h3>Reward Earned</h3>
+      <p>You earned 50 reward points for completing your first lesson.</p>
+      <div class="time">10 minutes ago</div>
+    </div>
+  </div>
+
+  <!-- Notification 3 -->
+  <div class="notification">
+    <div class="icon">📚</div>
+    <div class="content">
+      <h3>New Learning Path</h3>
+      <p>A new JavaScript quick learning path is available for you.</p>
+      <div class="time">1 hour ago</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
