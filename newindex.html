@@ -170,7 +170,17 @@ main{
 
 .features p{
   margin-bottom:40px;
-  color:#475569;
+  color:#0b0b0b;
+}
+.feature p:hover{
+  transform: translateY(-8px) scale(1.03);
+  background:#2563eb;
+  color:#ffffff;
+
+  /* Glow effect */
+  box-shadow:
+    0 0 0 2px rgb(37, 99, 235,0.2),
+    0 12px 30px rgba(37,99,235,0.45);
 }
 
 .feature-cards{
@@ -184,6 +194,17 @@ main{
   border-radius:14px;
   flex:1;
   border:1px solid #c7d7ee;
+}
+ 
+.card:hover{
+  transform: translateY(-8px) scale(1.03);
+  background:#2563eb;
+  color:#ffffff;
+
+  /* Glow effect */
+  box-shadow:
+    0 0 0 2px rgb(37, 99, 235,0.2),
+    0 12px 30px rgba(37,99,235,0.45);
 }
 
 /* ================= LANGUAGES ================= */
@@ -259,6 +280,16 @@ main{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:24px;
+}
+.team-card:hover{
+  transform: translateY(-8px) scale(1.03);
+  background:#2563eb;
+  color:#ffffff;
+
+  /* Glow effect */
+  /* box-shadow:
+    0 0 0 2px rgba(37,99,235,0.2),
+    0 12px 30px rgba(37,99,235,0.45); */
 }
 
 .team-card{
