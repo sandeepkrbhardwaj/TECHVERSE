@@ -34,6 +34,13 @@
       padding:0 20px;
       z-index:1000;
     }
+    .logo-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:inherit;
+}
 
     .brand{
       display:flex;
@@ -230,10 +237,14 @@
 <!-- ================= HEADER ================= -->
 <header>
   <div class="brand">
-    <button id="toggleSidebar" class="toggle-btn">☰</button>
-    <img src="logo.jpeg" alt="logo">
-    Techverse
-  </div>
+  <button id="toggleSidebar" class="toggle-btn">≡</button>
+
+  <a href="newindex.html" class="logo-link">
+    <img src="logo.jpeg" alt="Techverse Logo">
+    <span>Techverse</span>
+  </a>
+</div>
+
 
   <div class="search-wrap">
     <div class="search-box">
@@ -320,3 +331,4 @@
 
 </body>
 </html>
+
