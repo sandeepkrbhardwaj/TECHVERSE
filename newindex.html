@@ -215,7 +215,6 @@ main{
   grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
-
 .lang-card{
   background:#ffffff;
   padding:36px;
@@ -224,7 +223,26 @@ main{
   font-size:22px;
   font-weight:700;
   color:#1e3a8a;
+  cursor:pointer;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease;
 }
+
+.lang-card:hover{
+  transform: translateY(-8px) scale(1.03);
+  background:#2563eb;
+  color:#ffffff;
+
+  /* Glow effect */
+  box-shadow:
+    0 0 0 2px rgba(37,99,235,0.2),
+    0 12px 30px rgba(37,99,235,0.45);
+}
+
 
 /* ================= TEAM ================= */
 .team{
@@ -314,6 +332,7 @@ footer{
     grid-template-columns:1fr;
   }
 }
+
 </style>
 </head>
 
@@ -426,8 +445,12 @@ footer{
 const popup = document.getElementById("popup");
 const frame = document.getElementById("popupFrame");
 
-function openSignup(){
-  frame.src = "newsignup.html";
+function openSignup(language = ""){
+  if(language){
+    frame.src = "newsignup.html?lang=" + encodeURIComponent(language);
+  } else {
+    frame.src = "newsignup.html";
+  }
   popup.style.display = "flex";
 }
 
@@ -441,13 +464,17 @@ function closePopup(){
   frame.src = "";
 }
 
-/* 👇 expose functions to iframe */
-window.openSignup = openSignup;
-window.openLogin = openLogin;
-window.closePopup = closePopup;
+/* 👇 Language click → Signup with language */
+document.querySelectorAll(".lang-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const languageName = card.innerText.trim();
+    openSignup(languageName);
+  });
+});
 </script>
+
+
 
 
 </body>
 </html>
-

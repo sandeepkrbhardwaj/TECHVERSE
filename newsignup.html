@@ -158,6 +158,8 @@
     </div>
 
   </div>
+ 
+
 
 <script>
   /* ================= SIGNUP LOGIC ================= */
@@ -190,7 +192,19 @@
     /* ✅ FORCE FULL SCREEN REDIRECT */
     window.top.location.href = "afterlogin.html";
   }
+  </script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const selectedLang = params.get("lang");
+
+if(selectedLang){
+  const langField = document.getElementById("selectedLanguage");
+  if(langField){
+    langField.value = selectedLang;
+  }
+}
 </script>
+
 
 </body>
 </html>
