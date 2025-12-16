@@ -3,13 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>Login | Techverse</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
   background:transparent;
   height:100vh;
   display:flex;
@@ -17,36 +23,72 @@ body{
   justify-content:center;
 }
 
+/* ================= POPUP ================= */
 .popup{
   width:100%;
+  max-width:420px;
   padding:30px;
 }
 
-h2{text-align:center;color:#1e3a8a;margin-bottom:6px}
-p{text-align:center;color:#475569;margin-bottom:20px;font-size:14px}
+/* ================= LOGO ================= */
+.logo{
+  display:flex;
+  justify-content:center;     /* ✅ horizontal center */
+  align-items:center;
+  margin-bottom:20px;         /* space below logo */
+}
 
+.logo img{
+  height:48px;                /* clean professional size */
+  width:auto;
+  display:block;
+}
+
+/* ================= TEXT ================= */
+h2{
+  text-align:center;
+  color:#1e3a8a;
+  margin-bottom:6px;
+}
+
+p{
+  text-align:center;
+  color:#475569;
+  margin-bottom:22px;
+  font-size:14px;
+}
+
+/* ================= INPUTS ================= */
 input{
   width:100%;
   padding:12px;
   margin:10px 0;
-  border-radius:8px;
+  border-radius:10px;
   border:1px solid #cbd5e1;
+  font-size:15px;
 }
 
+/* ================= BUTTON ================= */
 button{
   width:100%;
   padding:12px;
-  margin-top:10px;
+  margin-top:12px;
   background:#2563eb;
   color:white;
   border:none;
   border-radius:10px;
   font-size:16px;
+  font-weight:bold;
   cursor:pointer;
 }
 
+button:hover{
+  background:#1e40af;
+}
+
+/* ================= EXTRA ================= */
 .small{
-  margin-top:14px;
+  margin-top:16px;
   text-align:center;
   font-size:14px;
   color:#475569;
@@ -58,26 +100,36 @@ button{
   font-weight:600;
   text-decoration:none;
 }
-.small a:hover{text-decoration:underline}
+
+.small a:hover{
+  text-decoration:underline;
+}
 </style>
 </head>
 
 <body>
 
 <div class="popup">
+
+  <!-- ✅ LOGO TOP CENTER -->
+  <div class="logo">
+    <img src="indexlogo.png" alt="Techverse Logo">
+  </div>
+
   <h2>Welcome Back</h2>
   <p>Login to continue learning</p>
 
   <input type="email" placeholder="Email Address">
   <input type="password" placeholder="Password">
 
-  <!-- ✅ LOGIN -->
+  <!-- LOGIN -->
   <button onclick="login()">Log In</button>
 
   <div class="small">
     Don’t have an account?
     <a onclick="goSignup()">Create account</a>
   </div>
+
 </div>
 
 <script>
@@ -87,9 +139,9 @@ function goSignup(){
   }
 }
 
-/* ✅ AFTER LOGIN → FULL PAGE */
+/* ✅ AFTER LOGIN → FULL SCREEN */
 function login(){
-  window.parent.location.href = "afterlogin.html";
+  window.top.location.href = "afterlogin.html";
 }
 </script>
 

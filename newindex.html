@@ -46,10 +46,20 @@ header{
 }
 
 .logo{
+  display:flex;              /* image + text ek line me */
+  align-items:center;        /* vertically center */
+  gap:10px;                  /* logo aur text ke beech space */
   font-size:22px;
   font-weight:bold;
   color:#1e3a8a;
 }
+
+.logo img{
+  height:42px;               /* clean size */
+  width:auto;
+  display:block;
+}
+
 
 nav{
   display:flex;
@@ -312,7 +322,11 @@ footer{
 <!-- ================= NAVBAR ================= -->
 <header>
   <div class="page-container nav-inner">
-    <div class="logo">Techverse</div>
+   <div class="logo">
+  <img src="indexlogo.png" alt="Techverse Logo">
+  Techverse
+</div>
+
     <nav>
       <a href="#features">Features</a>
       <a href="#languages">Languages</a>

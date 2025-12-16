@@ -1,96 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techverse | Create Account</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+  <style>
+    /* ================= RESET ================= */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
 
-body{
-  font-family:Arial, sans-serif;
-  background:transparent;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    /* ================= BODY ================= */
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#ffffff;
+    }
 
-.popup{
-  width:100%;
-  padding:30px;
-}
+    /* ================= SIGNUP CARD ================= */
+    .signup-box{
+      width:100%;
+      max-width:440px;
+      background:#ffffff;
+      padding:30px;
+      border-radius:16px;
+      box-shadow:0 18px 40px rgba(0,0,0,0.15);
+      animation:pop 0.35s ease;
+    }
 
-h2{text-align:center;color:#1e3a8a;margin-bottom:6px}
-p{text-align:center;color:#475569;margin-bottom:20px;font-size:14px}
+    @keyframes pop{
+      from{transform:scale(0.9);opacity:0;}
+      to{transform:scale(1);opacity:1;}
+    }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid #cbd5e1;
-}
+    /* ================= LOGO ================= */
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:18px;
+    }
 
-button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:#2563eb;
-  color:white;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  cursor:pointer;
-}
+    .logo img{
+      width:105px;
+      height:85px;
+      border-radius:8px;
+    }
 
-.small{
-  margin-top:14px;
-  text-align:center;
-  font-size:14px;
-  color:#475569;
-}
+    .logo span{
+      font-size:22px;
+      font-weight:bold;
+      color:#0b3b6f;
+    }
 
-.small a{
-  cursor:pointer;
-  color:#2563eb;
-  font-weight:600;
-  text-decoration:none;
-}
-.small a:hover{text-decoration:underline}
-</style>
+    /* ================= TITLE ================= */
+    h2{
+      text-align:center;
+      margin-bottom:6px;
+      color:#0b3b6f;
+    }
+
+    p{
+      text-align:center;
+      font-size:14px;
+      color:#475569;
+      margin-bottom:22px;
+      font-weight:600;
+    }
+
+    /* ================= INPUTS ================= */
+    input{
+      width:100%;
+      padding:12px;
+      margin-bottom:14px;
+      border-radius:10px;
+      border:1px solid #cbd5e1;
+      font-size:15px;
+      outline:none;
+    }
+
+    input:focus{
+      border-color:#135bec;
+    }
+
+    /* ================= BUTTON ================= */
+    button{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background:#135bec;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    button:hover{
+      background:#0b3b6f;
+    }
+
+    /* ================= EXTRA ================= */
+    .extra{
+      margin-top:16px;
+      text-align:center;
+      font-size:14px;
+      color:#475569;
+    }
+
+    .extra a{
+      color:#135bec;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .extra a:hover{
+      text-decoration:underline;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="popup">
-  <h2>Welcome Back</h2>
-  <p>Login to continue learning</p>
+  <!-- ================= SIGNUP CARD ================= -->
+  <div class="signup-box">
 
-  <input type="email" placeholder="Email Address">
-  <input type="password" placeholder="Password">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="indexlogo.png" alt="Techverse Logo">
+     
+    </div>
 
-  <!-- ✅ LOGIN -->
-  <button onclick="login()">Log In</button>
+    <h2>Create Account 🚀</h2>
+    <p>Join Techverse and start learning today</p>
 
-  <div class="small">
-    Don’t have an account?
-    <a onclick="goSignup()">Create account</a>
+    <!-- Inputs -->
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+    <!-- Button -->
+    <button onclick="signup()">Create Account</button>
+
+    <!-- Extra -->
+    <div class="extra">
+      Already have an account?
+      <a href="newlogin.html">Login</a>
+    </div>
+
   </div>
-</div>
 
 <script>
-function goSignup(){
-  if(window.parent && window.parent.openSignup){
-    window.parent.openSignup();
-  }
-}
+  /* ================= SIGNUP LOGIC ================= */
+  function signup(){
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-/* ✅ AFTER LOGIN → FULL PAGE */
-function login(){
-  window.parent.location.href = "afterlogin.html";
-}
+    if(name === "" || email === "" || password === "" || confirmPassword === ""){
+      alert("Please fill all fields");
+      return;
+    }
+
+    if(password.length < 6){
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    if(password !== confirmPassword){
+      alert("Passwords do not match");
+      return;
+    }
+
+    /* Save login state (demo) */
+    localStorage.setItem("techverse_user", email);
+    localStorage.setItem("techverse_name", name);
+    localStorage.setItem("techverse_loggedin", "true");
+
+    /* ✅ FORCE FULL SCREEN REDIRECT */
+    window.top.location.href = "afterlogin.html";
+  }
 </script>
 
 </body>
