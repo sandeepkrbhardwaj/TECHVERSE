@@ -503,6 +503,33 @@ document.querySelectorAll(".lang-card").forEach(card => {
   });
 });
 </script>
+<script>
+window.addEventListener("message", function (event) {
+  if (event.data && event.data.type === "AUTH_SUCCESS") {
+    window.location.replace("afterlogin.html");
+  }
+});
+</script>
+<script>
+window.addEventListener("message", function (event) {
+  if (event.data && event.data.type === "AUTH_SUCCESS") {
+    window.location.replace("afterlogin.html");
+  }
+});
+</script>
+<script>
+/* ===== LISTEN FOR LOGIN / SIGNUP SUCCESS ===== */
+window.addEventListener("message", function (event) {
+
+  console.log("Message received:", event.data); // DEBUG LINE
+
+  if (event.data && event.data.action === "LOGIN_SUCCESS") {
+    window.location.replace("afterlogin.html");
+  }
+
+});
+</script>
+
 
 
 

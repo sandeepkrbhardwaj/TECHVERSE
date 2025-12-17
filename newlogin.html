@@ -6,15 +6,12 @@
 <title>Login | Techverse</title>
 
 <style>
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
   font-family:Arial, sans-serif;
 }
-
-/* ================= BODY ================= */
 body{
   background:transparent;
   height:100vh;
@@ -22,53 +19,26 @@ body{
   align-items:center;
   justify-content:center;
 }
-
-/* ================= POPUP ================= */
 .popup{
   width:100%;
   max-width:420px;
   padding:30px;
 }
-
-/* ================= LOGO ================= */
 .logo{
   display:flex;
-  justify-content:center;     /* ✅ horizontal center */
-  align-items:center;
-  margin-bottom:20px;         /* space below logo */
+  justify-content:center;
+  margin-bottom:20px;
 }
-
-.logo img{
-  height:48px;                /* clean professional size */
-  width:auto;
-  display:block;
-}
-
-/* ================= TEXT ================= */
-h2{
-  text-align:center;
-  color:#1e3a8a;
-  margin-bottom:6px;
-}
-
-p{
-  text-align:center;
-  color:#475569;
-  margin-bottom:22px;
-  font-size:14px;
-}
-
-/* ================= INPUTS ================= */
+.logo img{height:48px;}
+h2{text-align:center;color:#1e3a8a;margin-bottom:6px;}
+p{text-align:center;color:#475569;margin-bottom:22px;font-size:14px;}
 input{
   width:100%;
   padding:12px;
   margin:10px 0;
   border-radius:10px;
   border:1px solid #cbd5e1;
-  font-size:15px;
 }
-
-/* ================= BUTTON ================= */
 button{
   width:100%;
   padding:12px;
@@ -81,68 +51,51 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-
-button:hover{
-  background:#1e40af;
-}
-
-/* ================= EXTRA ================= */
-.small{
-  margin-top:16px;
-  text-align:center;
-  font-size:14px;
-  color:#475569;
-}
-
-.small a{
-  cursor:pointer;
-  color:#2563eb;
-  font-weight:600;
-  text-decoration:none;
-}
-
-.small a:hover{
-  text-decoration:underline;
-}
 </style>
 </head>
 
 <body>
 
 <div class="popup">
-
-  <!-- ✅ LOGO TOP CENTER -->
   <div class="logo">
-    <img src="indexlogo.png" alt="Techverse Logo">
+    <img src="indexlogo.png">
   </div>
 
   <h2>Welcome Back</h2>
   <p>Login to continue learning</p>
 
-  <input type="email" placeholder="Email Address">
-  <input type="password" placeholder="Password">
+  <input type="email" id="email" placeholder="Email Address">
+  <input type="password" id="password" placeholder="Password">
 
-  <!-- LOGIN -->
   <button onclick="login()">Log In</button>
-
-  <div class="small">
-    Don’t have an account?
-    <a onclick="goSignup()">Create account</a>
-  </div>
-
 </div>
 
-<script>
-function goSignup(){
-  if(window.parent && window.parent.openSignup){
-    window.parent.openSignup();
-  }
-}
+<script type="module">
+/* ===== FIREBASE LOGIN (IFRAME SAFE) ===== */
 
-/* ✅ AFTER LOGIN → FULL SCREEN */
-function login(){
-  window.top.location.href = "afterlogin.html";
-}
+import { auth } from "./firebase-config.js";
+import { signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+window.login = function () {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if(!email || !password){
+    alert("Fill all fields");
+    return;
+  }
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      // ✅ SEND MESSAGE TO PARENT
+      window.parent.postMessage(
+        { action: "LOGIN_SUCCESS" },
+        "*"
+      );
+    })
+    .catch(err => alert(err.message));
+};
 </script>
 
 </body>

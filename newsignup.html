@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Techverse | Create Account</title>
 
+  <!-- ================= CSS ================= -->
   <style>
-    /* ================= RESET ================= */
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    /* ================= BODY ================= */
-    body{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:#ffffff;
+    /* BODY */
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
     }
 
-    /* ================= SIGNUP CARD ================= */
-    .signup-box{
-      width:100%;
-      max-width:440px;
-      background:#ffffff;
-      padding:30px;
-      border-radius:16px;
-      box-shadow:0 18px 40px rgba(0,0,0,0.15);
-      animation:pop 0.35s ease;
+    /* SIGNUP CARD */
+    .signup-box {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+      animation: pop 0.35s ease;
     }
 
-    @keyframes pop{
-      from{transform:scale(0.9);opacity:0;}
-      to{transform:scale(1);opacity:1;}
+    @keyframes pop {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
-    /* ================= LOGO ================= */
-    .logo{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:18px;
+    /* LOGO */
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
     }
 
-    .logo img{
-      width:105px;
-      height:85px;
-      border-radius:8px;
+    .logo img {
+      width: 105px;
+      height: 85px;
+      border-radius: 8px;
     }
 
-    .logo span{
-      font-size:22px;
-      font-weight:bold;
-      color:#0b3b6f;
+    /* TITLE */
+    h2 {
+      text-align: center;
+      margin-bottom: 6px;
+      color: #0b3b6f;
     }
 
-    /* ================= TITLE ================= */
-    h2{
-      text-align:center;
-      margin-bottom:6px;
-      color:#0b3b6f;
+    p {
+      text-align: center;
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 22px;
+      font-weight: 600;
     }
 
-    p{
-      text-align:center;
-      font-size:14px;
-      color:#475569;
-      margin-bottom:22px;
-      font-weight:600;
+    /* INPUTS */
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+      outline: none;
     }
 
-    /* ================= INPUTS ================= */
-    input{
-      width:100%;
-      padding:12px;
-      margin-bottom:14px;
-      border-radius:10px;
-      border:1px solid #cbd5e1;
-      font-size:15px;
-      outline:none;
+    input:focus {
+      border-color: #135bec;
     }
 
-    input:focus{
-      border-color:#135bec;
+    /* BUTTON */
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #135bec;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    /* ================= BUTTON ================= */
-    button{
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background:#135bec;
-      color:white;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.2s;
+    button:hover {
+      background: #0b3b6f;
     }
 
-    button:hover{
-      background:#0b3b6f;
+    /* EXTRA */
+    .extra {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      color: #475569;
     }
 
-    /* ================= EXTRA ================= */
-    .extra{
-      margin-top:16px;
-      text-align:center;
-      font-size:14px;
-      color:#475569;
+    .extra a {
+      color: #135bec;
+      font-weight: bold;
+      text-decoration: none;
     }
 
-    .extra a{
-      color:#135bec;
-      font-weight:bold;
-      text-decoration:none;
-    }
-
-    .extra a:hover{
-      text-decoration:underline;
+    .extra a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -133,78 +132,90 @@
   <!-- ================= SIGNUP CARD ================= -->
   <div class="signup-box">
 
-    <!-- Logo -->
     <div class="logo">
-      <img src="indexlogo.png" alt="Techverse Logo">
-     
+      <img src="indexlogo.png" alt="Techverse Logo" />
     </div>
 
     <h2>Create Account 🚀</h2>
     <p>Join Techverse and start learning today</p>
 
-    <!-- Inputs -->
-    <input type="text" id="name" placeholder="Full Name">
-    <input type="email" id="email" placeholder="Email Address">
-    <input type="password" id="password" placeholder="Password">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <!-- INPUTS -->
+    <input type="text" id="name" placeholder="Full Name" />
+    <input type="email" id="email" placeholder="Email Address" />
+    <input type="password" id="password" placeholder="Password" />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
 
-    <!-- Button -->
+    <!-- BUTTON -->
     <button onclick="signup()">Create Account</button>
 
-    <!-- Extra -->
     <div class="extra">
       Already have an account?
       <a href="newlogin.html">Login</a>
     </div>
 
   </div>
- 
 
+  <!-- ================= FIREBASE SIGNUP SCRIPT ================= -->
+  <script type="module">
+    /* ---------------------------------------------------------
+       IMPORT FIREBASE AUTH
+    --------------------------------------------------------- */
+    import { auth } from "./firebase-config.js";
+    import {
+      createUserWithEmailAndPassword,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-<script>
-  /* ================= SIGNUP LOGIC ================= */
-  function signup(){
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    /* ---------------------------------------------------------
+       SIGNUP FUNCTION (ONLY ONE, FINAL)
+    --------------------------------------------------------- */
+    window.signup = function () {
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
 
-    if(name === "" || email === "" || password === "" || confirmPassword === ""){
-      alert("Please fill all fields");
-      return;
-    }
+      /* VALIDATION */
+      if (
+        !name.value ||
+        !email.value ||
+        !password.value ||
+        !confirmPassword.value
+      ) {
+        alert("Please fill all fields");
+        return;
+      }
 
-    if(password.length < 6){
-      alert("Password must be at least 6 characters");
-      return;
-    }
+      if (password.value.length < 6) {
+        alert("Password must be at least 6 characters");
+        return;
+      }
 
-    if(password !== confirmPassword){
-      alert("Passwords do not match");
-      return;
-    }
+      if (password.value !== confirmPassword.value) {
+        alert("Passwords do not match");
+        return;
+      }
 
-    /* Save login state (demo) */
-    localStorage.setItem("techverse_user", email);
-    localStorage.setItem("techverse_name", name);
-    localStorage.setItem("techverse_loggedin", "true");
-
-    /* ✅ FORCE FULL SCREEN REDIRECT */
-    window.top.location.href = "afterlogin.html";
-  }
+      /* FIREBASE CREATE USER */
+      createUserWithEmailAndPassword(auth, email.value, password.value)
+        .then((cred) => {
+          /* SAVE USER NAME */
+          return updateProfile(cred.user, {
+            displayName: name.value
+          });
+        })
+        .then(() => {
+          /* SAFE REDIRECT FROM IFRAME */
+          window.parent.postMessage(
+            { type: "AUTH_SUCCESS" },
+            "*"
+          );
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    };
   </script>
-<script>
-const params = new URLSearchParams(window.location.search);
-const selectedLang = params.get("lang");
-
-if(selectedLang){
-  const langField = document.getElementById("selectedLanguage");
-  if(langField){
-    langField.value = selectedLang;
-  }
-}
-</script>
-
 
 </body>
 </html>
