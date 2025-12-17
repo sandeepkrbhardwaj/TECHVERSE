@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Techverse | Profile</title>
+<title>My Profile | Techverse</title>
 
 <style>
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -14,309 +13,260 @@
   font-family:Arial, sans-serif;
 }
 
-/* ================= BASE ================= */
 body{
-  background:#f5f6f8;
-  padding:24px;
-  color:#222;
-}
-
-/* ================= HEADINGS ================= */
-.page-title{
-  font-size:28px;
-  font-weight:bold;
-}
-.page-sub{
-  color:#555;
-  margin-bottom:24px;
-}
-
-/* ================= PROFILE CARD ================= */
-.profile-card{
-  background:#fff;
-  padding:24px;
-  border-radius:12px;
+  background:#f1f5f9;
+  min-height:100vh;
   display:flex;
-  gap:24px;
+  justify-content:center;
   align-items:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom:28px;
 }
 
-.avatar-wrap{
-  position:relative;
-  cursor:pointer;
+.card{
+  width:100%;
+  max-width:560px;
+  background:#ffffff;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.15);
 }
 
-.avatar{
+h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#0b3b6f;
+}
+
+.profile-pic{
+  display:flex;
+  justify-content:center;
+  margin-bottom:16px;
+}
+
+.profile-pic img{
   width:120px;
   height:120px;
   border-radius:50%;
   object-fit:cover;
-  border:3px solid #135bec;
+  border:3px solid #2563eb;
 }
 
-.avatar-edit{
-  position:absolute;
-  bottom:6px;
-  right:6px;
-  background:#135bec;
-  color:#fff;
-  font-size:12px;
-  padding:4px 6px;
-  border-radius:6px;
-}
-
-/* ================= PROFILE INFO ================= */
-.profile-info h2{
-  font-size:24px;
-  margin-bottom:4px;
-}
-.profile-info p{
-  color:#555;
-  margin-bottom:10px;
-}
-
-.stats{
-  display:flex;
-  gap:20px;
-  font-size:14px;
-  font-weight:bold;
-}
-.stat{
-  background:#eef2ff;
-  color:#135bec;
-  padding:6px 12px;
-  border-radius:20px;
-}
-
-/* ================= SECTION ================= */
-.section{
-  background:#fff;
-  padding:24px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom:24px;
-}
-.section h3{
-  margin-bottom:14px;
-}
-
-/* ================= PROGRESS BAR ================= */
-.progress-box{
-  margin-top:10px;
-}
-.progress-label{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  margin-bottom:6px;
-}
-.progress-bar{
-  width:100%;
-  height:14px;
-  background:#ddd;
-  border-radius:20px;
-  overflow:hidden;
-}
-.progress-fill{
-  height:100%;
-  background:#135bec;
-  width:75%;
-  border-radius:20px;
-}
-
-/* ================= FORM ================= */
-.form-group{
-  margin-bottom:16px;
-}
 label{
-  display:block;
   font-size:14px;
   font-weight:bold;
-  margin-bottom:6px;
+  color:#334155;
 }
-input, textarea{
+
+input, select, textarea{
   width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:14px;
+  padding:12px;
+  margin:6px 0 14px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
 }
-textarea{ resize:none; }
 
-/* ================= SKILLS ================= */
-.skill-input{
-  display:flex;
-  gap:10px;
-  margin-bottom:10px;
+textarea{
+  resize:none;
+  height:60px;
 }
-.skill-input input{
-  flex:1;
+
+input:disabled{
+  background:#f8fafc;
 }
-.skill-input button{
-  padding:8px 14px;
-  background:#135bec;
-  color:#fff;
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
   border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.skill{
-  background:#eef2ff;
-  color:#135bec;
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-/* ================= BUTTON ================= */
-.save-btn{
-  background:#135bec;
-  color:#fff;
-  border:none;
-  padding:10px 20px;
-  border-radius:8px;
-  cursor:pointer;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
   font-weight:bold;
-}
-.save-btn:hover{
-  background:#0f4ed1;
+  cursor:pointer;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:720px){
-  .profile-card{
-    flex-direction:column;
-    text-align:center;
-  }
+button:hover{ background:#1e40af; }
+
+.logout{
+  background:#e11d48;
+}
+
+.logout:hover{ background:#be123c; }
+
+.msg{
+  margin-top:12px;
+  text-align:center;
+  color:green;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= TITLE ================= -->
-<h1 class="page-title">Profile</h1>
-<p class="page-sub">Manage your personal details & progress</p>
+<div class="card">
+  <h2>My Profile</h2>
 
-<!-- ================= PROFILE CARD ================= -->
-<div class="profile-card">
-
-  <!-- Avatar -->
-  <div class="avatar-wrap" onclick="pickImage()">
-    <img id="avatar" src="profile.jpg" class="avatar" alt="Profile">
-    <div class="avatar-edit">Edit</div>
-    <input type="file" id="imageInput" accept="image/*" hidden>
+  <div class="profile-pic">
+    <img id="avatar" src="https://via.placeholder.com/150">
   </div>
 
-  <!-- Info -->
-  <div class="profile-info">
-    <h2></h2>
-    <p>Full Stack Developer Student</p>
+  <label>Profile Photo</label>
+  <input type="file" id="photoFile" accept="image/*">
 
-    <div class="stats">
-      <div class="stat">Level 5</div>
-      <div class="stat">2300 XP</div>
-      <div class="stat">⭐ 12450 Points</div>
-    </div>
+  <label>Full Name</label>
+  <input id="name">
 
-    <!-- Progress -->
-    <div class="progress-box">
-      <div class="progress-label">
-        <span>Progress to Level 6</span>
-        <span>75%</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-    </div>
-  </div>
+  <label>Email</label>
+  <input id="email" disabled>
+
+  <label>Country</label>
+  <input id="country">
+
+  <label>Phone</label>
+  <input id="phone">
+
+  <label>Age</label>
+  <input type="number" id="age">
+
+  <label>Role</label>
+  <select id="role">
+    <option value="student">Student</option>
+    <option value="mentor">Mentor</option>
+    <option value="learner">Learner</option>
+  </select>
+
+  <label>Qualification</label>
+  <input id="qualification">
+
+  <label>Address</label>
+  <textarea id="address"></textarea>
+
+  <label>Skills (comma separated)</label>
+  <input id="skills">
+
+  <label>Courses / Languages</label>
+  <select id="languages" multiple>
+    <option>Python</option>
+    <option>Java</option>
+    <option>JavaScript</option>
+    <option>C++</option>
+    <option>HTML</option>
+    <option>CSS</option>
+  </select>
+
+  <button id="saveBtn" onclick="saveProfile()">Save Profile</button>
+  <button class="logout" onclick="logout()">Logout</button>
+
+  <div class="msg" id="msg"></div>
 </div>
 
-<!-- ================= PERSONAL INFO ================= -->
-<div class="section">
-  <h3>Personal Information</h3>
+<!-- ================= FIREBASE LOGIC ================= -->
+<script type="module">
+import { auth, db, storage } from "./firebase-config.js";
+import {
+  onAuthStateChanged,
+  updateProfile,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-  <div class="form-group">
-    <label>First Name</label>
-    <input type="text" value="just">
-  </div>
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-storage.js";
 
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" value="for fun">
-  </div>
+import {
+  doc,
+  setDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-  <div class="form-group">
-    <label>Bio</label>
-    <textarea rows="4">Woh hamesha sochta hai ki kal se diet shuru karega, lekin aaj ki Biryani ki khushboo sungh kar plan cancel aur plate refill. Usko lagta hai ki exercise sirf uske haath ki hoti hai, jo spoon ko lift karta hai aur fork ko push karta hai.     hu lala hu hu   hu la la huhu  .</textarea>
-  </div>
+/* 🔐 LOAD PROFILE AFTER LOGIN */
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "newindex.html";
+    return;
+  }
 
-  <button class="save-btn" onclick="saveProfile()">Save Changes</button>
-</div>
+  name.value = user.displayName || "";
+  email.value = user.email;
+  avatar.src = user.photoURL || avatar.src;
 
-<!-- ================= SKILLS ================= -->
-<div class="section">
-  <h3>Skills</h3>
+  try {
+    const snap = await getDoc(doc(db, "users", user.uid));
+    if (snap.exists()) {
+      const d = snap.data();
+      country.value = d.country || "";
+      phone.value = d.phone || "";
+      age.value = d.age || "";
+      role.value = d.role || "student";
+      qualification.value = d.qualification || "";
+      address.value = d.address || "";
+      skills.value = (d.skills || []).join(",");
 
-  <div class="skill-input">
-    <input id="skillInput" placeholder="Add a skill">
-    <button onclick="addSkill()">Add</button>
-  </div>
+      [...languages.options].forEach(o=>{
+        o.selected = (d.selectedLanguages || []).includes(o.value);
+      });
 
-  <div id="skills" class="skills">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-  </div>
-
-  <p style="font-size:12px;color:#555;margin-top:8px;">
-    Click on a skill to remove it
-  </p>
-</div>
-
-<script>
-/* ================= PROFILE IMAGE ================= */
-function pickImage(){
-  document.getElementById('imageInput').click();
-}
-
-document.getElementById('imageInput').addEventListener('change', function(e){
-  const file = e.target.files[0];
-  if(file){
-    const reader = new FileReader();
-    reader.onload = () => document.getElementById('avatar').src = reader.result;
-    reader.readAsDataURL(file);
+      if (d.profileCompleted) {
+        saveBtn.style.display = "none";
+      }
+    }
+  } catch (e) {
+    console.error("Load error:", e);
   }
 });
 
-/* ================= SKILL EDITOR ================= */
-function addSkill(){
-  const input = document.getElementById('skillInput');
-  const value = input.value.trim();
-  if(!value) return;
+/* 💾 SAVE PROFILE */
+window.saveProfile = async function () {
+  const user = auth.currentUser;
+  if (!user) return alert("Not logged in");
 
-  const skill = document.createElement('div');
-  skill.className = 'skill';
-  skill.textContent = value;
-  skill.onclick = () => skill.remove();
+  try {
+    let photoURL = user.photoURL || "";
 
-  document.getElementById('skills').appendChild(skill);
-  input.value = '';
-}
+    if (photoFile.files.length) {
+      const refImg = ref(storage, `profilePhotos/${user.uid}`);
+      await uploadBytes(refImg, photoFile.files[0]);
+      photoURL = await getDownloadURL(refImg);
+    }
 
-/* ================= SAVE PROFILE ================= */
-function saveProfile(){
-  alert("Profile saved successfully (demo)");
-}
+    await updateProfile(user, {
+      displayName: name.value.trim(),
+      photoURL
+    });
+
+    await setDoc(doc(db, "users", user.uid), {
+      name: name.value.trim(),
+      email: user.email,
+      country: country.value.trim(),
+      phone: phone.value.trim(),
+      age: Number(age.value),
+      role: role.value,
+      qualification: qualification.value.trim(),
+      address: address.value.trim(),
+      skills: skills.value.split(",").map(s=>s.trim()).filter(Boolean),
+      selectedLanguages: [...languages.selectedOptions].map(o=>o.value),
+      profileCompleted: true,
+      updatedAt: new Date()
+    }, { merge:true });
+
+    avatar.src = photoURL;
+    saveBtn.style.display = "none";
+    msg.innerText = "Profile saved successfully ✅";
+
+  } catch (err) {
+    alert("Save failed: " + err.message);
+    console.error(err);
+  }
+};
+
+/* 🚪 LOGOUT */
+window.logout = function () {
+  signOut(auth).then(()=> window.location.href="newindex.html");
+};
 </script>
 
 </body>

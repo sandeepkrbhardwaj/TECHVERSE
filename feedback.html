@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkillSyncers | Protégé Effect Research</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f7fb;
+  color:#1e293b;
+  line-height:1.7;
+  padding:30px 15px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.12);
+}
+
+h1{text-align:center;margin-bottom:25px;}
+h2{margin:35px 0 20px;color:#0f172a;}
+
+p{
+  margin-bottom:15px;
+  font-size:15.5px;
+  color:#334155;
+}
+
+/* ================= FEEDBACK ================= */
+.feedback-section{
+  margin-top:25px;
+  padding:25px;
+  background:#f8fafc;
+  border-radius:18px;
+}
+
+textarea{
+  width:100%;
+  height:130px;
+  padding:14px;
+  border-radius:12px;
+  border:1.5px solid #cbd5e1;
+  font-size:15px;
+  resize:none;
+}
+
+textarea:focus{
+  outline:none;
+  border-color:#6366f1;
+}
+
+button{
+  margin-top:15px;
+  padding:14px 22px;
+  font-size:16px;
+  font-weight:600;
+  background:#6366f1;
+  color:white;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+button:hover{background:#4f46e5;}
+
+.msg{margin-top:10px;font-size:14px;}
+
+.feedback-list{margin-top:25px;}
+
+.feedback-item{
+  background:#fff;
+  padding:14px 18px;
+  border-radius:12px;
+  margin-bottom:12px;
+  border-left:4px solid #6366f1;
+}
+
+.feedback-item small{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  color:#64748b;
+}
+
+/* ================= VIDEOS ================= */
+.video-row{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:30px 0;
+}
+
+.video-row.four video{
+  width:220px;
+  height:320px;
+}
+
+video{
+  border-radius:14px;
+  background:black;
+  box-shadow:0 10px 25px rgba(0,0,0,0.18);
+  transition:.3s;
+}
+
+video:hover{transform:scale(1.03);}
+
+.main-video{
+  width:820px;
+  height:320px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1><u>SkillSyncers Research on the Protégé Effect (2025)</u></h1>
+
+<p>
+This was our team’s very first research project, focused on the concept of the
+<b>Protégé Effect</b>, which means “learning by teaching.”
+</p>
+
+<p>
+To test this, we conducted our sessions on <b>November 15 and November 16, 2025</b>.
+</p>
+
+<p>
+Participants were trained to teach a specific subject, then tested after teaching.
+Results clearly showed that explaining concepts significantly boosts understanding.
+</p>
+
+<p>
+This research proves that encouraging students to teach is a powerful learning strategy.
+</p>
+
+<h2><u>Student Feedback (Video Responses)</u></h2>
+
+
+<!-- ================= FEEDBACK ================= -->
+<h2><u>Written Feedback</u></h2>
+
+<div class="feedback-section">
+  <textarea id="feedbackText" placeholder="Write your feedback here..."></textarea>
+  <button onclick="submitFeedback()">Submit Feedback</button>
+  <div class="msg" id="message"></div>
+
+  <div class="feedback-list" id="feedbackContainer">
+    <p>Loading feedback...</p>
+  </div>
+</div>
+
+<!-- ================= 4 VIDEOS FIRST ================= -->
+<h2><u>Student Video Feedback</u></h2>
+
+
+<!-- MAIN VIDEO -->
+<div class="video-row">
+  <video width="820" height="320" controls>
+    <source src="../video/main-video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- VIDEO ROW 1 -->
+<div class="video-row">
+  <video width="220" height="320" controls><source src="../video/video1.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video7.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video6.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video8.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video10.mp4"></video>
+</div>
+
+<!-- VIDEO ROW 2 -->
+<div class="video-row">
+  <video width="220" height="320" controls><source src="../video/video9.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video2.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video12.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video11.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video4.mp4"></video>
+</div>
+
+<!-- VIDEO ROW 3 -->
+<div class="video-row">
+  <video width="220" height="320" controls><source src="../video/video3.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video5.mp4"></video>
+  <video width="220" height="320" controls><source src="../video/video13.mp4"></video>
+</div>
+
+
+<!-- ================= FIREBASE (UNCHANGED LOGIC) ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp,
+         query, orderBy, onSnapshot }
+from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "techverseskill.firebaseapp.com",
+  projectId: "techverseskill",
+  storageBucket: "techverseskill.appspot.com",
+  messagingSenderId: "530477137468",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.submitFeedback = async () => {
+  if(feedbackText.value.trim().length < 6){
+    message.style.color="red";
+    message.innerText="Please write at least 10 characters.";
+    return;
+  }
+
+  await addDoc(collection(db,"feedback"),{
+    message:feedbackText.value,
+    createdAt:serverTimestamp(),
+    anonymous:true
+  });
+
+  message.style.color="green";
+  message.innerText="Feedback submitted!";
+  feedbackText.value="";
+};
+
+const q = query(collection(db,"feedback"), orderBy("createdAt","desc"));
+onSnapshot(q,(snap)=>{
+  feedbackContainer.innerHTML="";
+  snap.forEach(doc=>{
+    const d = doc.data();
+    feedbackContainer.innerHTML += `
+      <div class="feedback-item">
+        ${d.message}
+        <small>${d.createdAt?.toDate().toLocaleString() || ""}</small>
+      </div>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>
