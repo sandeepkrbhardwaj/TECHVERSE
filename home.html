@@ -1,288 +1,387 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Techverse — Smart Tech Skill Exchange</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Techverse — Learn the Way Humans Learn</title>
 
 <style>
+
+/* ================= ROOT COLORS ================= */
+:root{
+  --primary:#0b3b6f;
+  --dark:#0f172a;
+  --soft:#475569;
+  --bg:#f6f9fb;
+}
+
 /* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, sans-serif;
+  font-family:"Segoe UI", system-ui, Arial, sans-serif;
 }
 
+/* ================= BODY ================= */
 body{
-  background:#f6f9fb;
-  color:#111827;
-  line-height:1.6;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.7;
+}
+
+/* ================= REVEAL ANIMATION ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.9s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= GREETING ================= */
+.greeting{
+  max-width:1200px;
+  margin:30px auto 20px;
+  padding:0 24px;
+  font-size:18px;
+  color:var(--soft);
+}
+.greeting span{
+  color:var(--primary);
+  font-weight:700;
 }
 
 /* ================= HERO ================= */
 .hero{
   max-width:1400px;
-  background:#ffffff;
-  margin:40px auto;
-  padding:50px 30px;
-  text-align:center;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(56,76,121,0.15);
-}
-
-.hero h1{
-  font-size:46px;
-  color:#0b3b6f;
-  margin-bottom:20px;
-}
-
-.hero p{
-  max-width:900px;
-  margin:0 auto 30px;
-  font-size:18px;
-  color:#334155;
-  font-weight:600;
+  margin:20px auto 100px;
+  padding:90px 50px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#0b3b6f,#041a34);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+  color:#ffffff;
 }
 
 .hero img{
-  max-width:100%;
-  border-radius:14px;
-  margin-bottom:30px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  max-width:480px;
+  border-radius:22px;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
-.cta-btn{
-  display:inline-block;
-  background:#0b3b6f;
-  color:#fff;
-  padding:15px 30px;
-  border-radius:10px;
-  text-decoration:none;
-  font-size:18px;
-  font-weight:bold;
+.hero h1{
+  font-size:48px;
+  margin-bottom:18px;
 }
-.cta-btn:hover{background:#082b52}
+
+.hero p{
+  font-size:19px;
+  opacity:0.95;
+  margin-bottom:28px;
+}
+
+.hero a{
+  display:inline-block;
+  background:#ffffff;
+  color:var(--primary);
+  padding:16px 40px;
+  border-radius:14px;
+  font-weight:700;
+  text-decoration:none;
+}
 
 /* ================= SECTION ================= */
 .section{
   max-width:1200px;
-  margin:70px auto;
-  background:#ffffff;
-  padding:50px 35px;
-  border-radius:16px;
-  box-shadow:0 8px 24px rgba(15,23,42,0.1);
+  margin:90px auto;
+  padding:0 24px;
 }
 
-.section h2{
-  text-align:center;
-  font-size:36px;
-  color:#0b3b6f;
-  margin-bottom:20px;
+/* Soft divider */
+.section::after{
+  content:"";
+  display:block;
+  height:1px;
+  margin:80px 0;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(15,23,42,0.15),
+    transparent
+  );
 }
 
-.section p{
-  max-width:900px;
-  margin:0 auto;
-  text-align:center;
-  font-size:17px;
-  color:#334155;
-  font-weight:600;
-}
-
-/* ================= GRID ================= */
-.grid{
+/* ================= CONTENT BLOCK ================= */
+.block{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-  margin-top:40px;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+  margin-bottom:120px;
 }
 
-.box{
-  background:#f8fafc;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+.block.reverse .media{
+  order:-1;
+}
+
+.block h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:14px;
+}
+
+.block p{
+  font-size:17px;
+  color:var(--soft);
+  max-width:520px;
+}
+
+.block img{
+  max-width:480px;
+  border-radius:20px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+/* ================= JOURNEY ================= */
+.journey{
+  max-width:1200px;
+  margin:110px auto;
+  padding:90px 30px;
+  background:#ffffff;
+  border-radius:30px;
+  box-shadow:0 14px 40px rgba(15,23,42,.08);
+}
+
+.journey h2{
   text-align:center;
-}
-.box h3{
-  font-size:22px;
-  color:#0b3b6f;
-  margin-bottom:10px;
-}
-.box p{
-  font-size:15px;
-  color:#475569;
+  font-size:42px;
+  color:var(--primary);
+  margin-bottom:60px;
 }
 
-/* ================= STEPS ================= */
 .steps{
-  max-width:900px;
-  margin:40px auto 0;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:22px;
 }
+
 .step{
   background:#f8fafc;
-  padding:18px 22px;
-  border-radius:12px;
-  margin-bottom:16px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  font-weight:600;
-}
-
-/* ================= STATS (ANIMATED) ================= */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-  margin-top:40px;
-}
-
-.stat{
-  background:#f8fafc;
-  padding:30px;
-  border-radius:14px;
+  padding:26px;
+  border-radius:20px;
   text-align:center;
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  font-weight:700;
+  color:#1e293b;
 }
 
-.stat h3{
-  font-size:42px;
-  color:#0b3b6f;
+/* ================= FINAL CTA ================= */
+.final{
+  max-width:1400px;
+  margin:150px auto 80px;
+  padding:120px 50px;
+  border-radius:36px;
+  background:linear-gradient(135deg,#041a34,#0b3b6f);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+  color:#ffffff;
 }
 
-.stat p{
-  font-size:14px;
-  color:#475569;
-  font-weight:600;
+.final h2{
+  font-size:46px;
+  margin-bottom:18px;
+}
+
+.final p{
+  font-size:20px;
+  opacity:0.95;
+  margin-bottom:32px;
+}
+
+.final a{
+  background:#ffffff;
+  color:var(--primary);
+  padding:18px 46px;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.final img{
+  max-width:520px;
+  border-radius:26px;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
 /* ================= FOOTER ================= */
 footer{
   text-align:center;
-  padding:30px 0;
-  font-size:14px;
+  padding:40px 0;
   color:#64748b;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 @media(max-width:900px){
-  .grid{grid-template-columns:1fr;}
-  .stats{grid-template-columns:1fr 1fr;}
-  .hero h1{font-size:32px;}
+
+  .hero,
+  .block,
+  .final{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- GREETING -->
+<div class="greeting">
+  Welcome , <span id="username">Learner</span> 👋  
+  <br>Let’s learn in a calm and focused way.
+</div>
+
 <!-- HERO -->
-<section class="hero">
-  <h1>Smart Tech Skills. Clean Learning. Better Growth.</h1>
-  <img src="acp.png" alt="Learning comparison">
-  <p>
-    Techverse is a collaborative learning platform where learners grow faster
-    by learning, practicing, and teaching together.
-  </p>
-  <a href="language.html" class="cta-btn">Start Learning</a>
+<section class="hero reveal">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+  <div>
+    <h1>Learning That Feels Clear, Not Stressful</h1>
+    <p>
+      Techverse is designed the way the human brain actually learns —
+      step by step, with clarity and confidence.
+    </p>
+    <a href="language.html">Start Learning</a>
+  </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- PSYCHOLOGY SECTIONS -->
 <section class="section">
-  <h2>How Techverse Works</h2>
-  <p>Simple steps designed for real skill growth.</p>
 
-  <div class="grid">
-    <div class="box"><h3>Learn</h3><p>Understand core concepts clearly.</p></div>
-    <div class="box"><h3>Practice</h3><p>Apply learning with peers.</p></div>
-    <div class="box"><h3>Teach</h3><p>Teach others to master skills.</p></div>
+  <div class="block reveal">
+    <div class="text">
+      <h2>Why Random Learning Fails</h2>
+      <p>
+        Jumping between videos overloads the brain
+        and creates confusion instead of understanding.
+      </p>
+    </div>
+    <div class="media">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4">
+    </div>
   </div>
+
+  <div class="block reverse reveal">
+    <div class="text">
+      <h2>Structure Reduces Anxiety</h2>
+      <p>
+        When learning has direction,
+        the brain feels safe and focused.
+      </p>
+    </div>
+    <div class="media">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+    </div>
+  </div>
+
+  <div class="block reveal">
+    <div class="text">
+      <h2>Understanding Builds Confidence</h2>
+      <p>
+        Clear understanding removes fear
+        and replaces it with self-belief.
+      </p>
+    </div>
+    <div class="media">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+    </div>
+  </div>
+
+  <div class="block reverse reveal">
+    <div class="text">
+      <h2>Teaching Locks Memory</h2>
+      <p>
+        Explaining ideas forces the brain
+        to organize and retain knowledge.
+      </p>
+    </div>
+    <div class="media">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+    </div>
+  </div>
+
 </section>
 
 <!-- JOURNEY -->
-<section class="section">
-  <h2>Your Learning Journey</h2>
-  <p>Step-by-step progress.</p>
-
+<section class="journey reveal">
+  <h2>Your Natural Learning Flow</h2>
   <div class="steps">
-    <div class="step">📌 Choose a skill</div>
-    <div class="step">📌 Learn fundamentals</div>
-    <div class="step">📌 Practice with peers</div>
-    <div class="step">📌 Teach & earn points</div>
-    <div class="step">📌 Track growth</div>
-  </div>
-</section>
-
-<!-- ANIMATED STATS -->
-<section class="section" id="stats">
-  <h2>Our Growing Impact</h2>
-  <p>Live growth powered by learners.</p>
-
-  <div class="stats">
-    <div class="stat">
-      <h3 class="counter" data-target="50">0</h3>
-      <p>Learning Topics</p>
-    </div>
-    <div class="stat">
-      <h3 class="counter" data-target="120">0</h3>
-      <p>Active Learners</p>
-    </div>
-    <div class="stat">
-      <h3 class="counter" data-target="350">0</h3>
-      <p>Skill Exchanges</p>
-    </div>
-    <div class="stat">
-      <h3 class="counter" data-target="24">0</h3>
-      <p>Hours Access</p>
-    </div>
+    <div class="step">Choose</div>
+    <div class="step">Understand</div>
+    <div class="step">Practice</div>
+    <div class="step">Explain</div>
+    <div class="step">Grow</div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="hero">
-  <h1>Start Your Learning Journey Today</h1>
-  <p>Learn. Teach. Grow — together.</p>
-  <a href="language.html" class="cta-btn">Explore Skills</a>
+<section class="final reveal">
+  <div>
+    <h2>Learn Without Pressure</h2>
+    <p>
+      No confusion. No overload.
+      Just calm, confident progress.
+    </p>
+    <a href="language.html">Continue Learning</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca">
 </section>
 
-<footer>
-  © <span id="year"></span> Techverse • All rights reserved
-</footer>
+<footer>© 2025 Techverse</footer>
 
-<script>
-/* YEAR */
-document.getElementById("year").textContent = new Date().getFullYear();
+<!-- FIREBASE USER NAME -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-/* COUNTER ANIMATION */
-const counters = document.querySelectorAll('.counter');
-let started = false;
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID"
+};
 
-function startCounter(){
-  counters.forEach(counter => {
-    const target = +counter.getAttribute('data-target');
-    let count = 0;
-    const speed = target / 80;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-    const update = () => {
-      count += speed;
-      if(count < target){
-        counter.innerText = Math.floor(count);
-        requestAnimationFrame(update);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    update();
-  });
-}
-
-window.addEventListener("scroll", () => {
-  const section = document.getElementById("stats");
-  const pos = section.getBoundingClientRect().top;
-  if(pos < window.innerHeight && !started){
-    started = true;
-    startCounter();
+onAuthStateChanged(auth, user=>{
+  if(user && user.displayName){
+    document.getElementById("username").textContent = user.displayName;
   }
 });
+</script>
+
+<!-- REVEAL SCRIPT -->
+<script>
+const items=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+items.forEach(i=>observer.observe(i));
 </script>
 
 </body>

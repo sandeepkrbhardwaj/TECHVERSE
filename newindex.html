@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Techverse - The Future of Learning</title>
+<title>Techverse – Learn Smarter</title>
 
 <style>
 /* ================= RESET ================= */
@@ -11,19 +11,19 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 /* ================= BODY ================= */
 body{
-  font-family:Arial, sans-serif;
-  background:#dce9f7;
+  background:#eaf2fb;
   color:#0f172a;
 }
 
 /* ================= CONTAINER ================= */
 .page-container{
   max-width:1200px;
-  margin:0 auto;
+  margin:auto;
   padding:0 20px;
 }
 
@@ -46,20 +46,17 @@ header{
 }
 
 .logo{
-  display:flex;              /* image + text ek line me */
-  align-items:center;        /* vertically center */
-  gap:10px;                  /* logo aur text ke beech space */
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-size:22px;
   font-weight:bold;
   color:#1e3a8a;
 }
 
 .logo img{
-  height:42px;               /* clean size */
-  width:auto;
-  display:block;
+  height:40px;
 }
-
 
 nav{
   display:flex;
@@ -67,8 +64,8 @@ nav{
 }
 
 nav a{
-  color:#0f172a;
   text-decoration:none;
+  color:#0f172a;
   font-size:14px;
 }
 
@@ -83,7 +80,7 @@ nav a:hover{
 
 .btn-primary{
   background:#2563eb;
-  color:white;
+  color:#ffffff;
   border:none;
   padding:10px 18px;
   border-radius:6px;
@@ -106,107 +103,193 @@ main{
 
 /* ================= HERO ================= */
 .hero{
-  padding:50px 0;
+  padding:90px 0;
 }
 
 .hero-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+.hero-inner:first-child{
+  flex-direction: row-reverse;
+}
+
 
 .hero-text{
   width:50%;
 }
 
 .hero-text h1{
-  font-size:48px;
-  margin-bottom:16px;
+  font-size:46px;
   color:#1e3a8a;
+  margin-bottom:14px;
 }
 
 .hero-text p{
   font-size:18px;
-  margin-bottom:24px;
   color:#334155;
+  margin-bottom:24px;
+}
+
+.hero-text button{
+  padding:14px 30px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:#ffffff;
+  cursor:pointer;
+}
+
+.hero-sub{
+  margin-top:10px;
+  font-size:14px;
+  color:#64748b;
 }
 
 .hero-img{
-  width:45%;
-  border-radius:16px;
+  width:45%; flex-direction:row-reverse;
 }
 
-/* ================= STATS ================= */
-.stats{
-  padding:30px 0;
+.hero-img img{
+  width:100%;
+  border-radius:18px;
 }
 
-.stats-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:24px;
-  text-align:center;
-}
-
-.stat-box{
+/* ================= PSYCHO SECTIONS ================= */
+.psy-visual{
+  padding:70px 0;
   background:#ffffff;
-  border:1px solid #c7d7ee;
-  padding:24px;
-  border-radius:14px;
 }
 
-/* ================= FEATURES ================= */
-.features{
-  padding:50px 0;
+.psy-visual.light{
+  background:#eef4fb;
+}
+
+.psy-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:36px;
+}
+
+.psy-inner.reverse{
+  flex-direction:row-reverse;
+}
+
+.psy-text{
+  width:50%;
+}
+
+.psy-text h2{
+  font-size:36px;
+  color:#1e3a8a;
+  margin-bottom:14px;
+}
+
+.psy-big{
+  font-size:26px;
+  font-weight:700;
+  line-height:1.35;
+  color:#1e3a8a;
+  margin-bottom:16px;
+}
+
+.psy-big span{
+  display:block;
+}
+
+.psy-text p{
+  font-size:18px;
+  line-height:1.7;
+  color:#334155;
+  max-width:560px;
+}
+
+.psy-img{
+  width:45%;
+}
+
+.psy-img img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+/* ================= HOW ================= */
+.how{
+  padding:90px 0;
+  background:#ffffff;
   text-align:center;
 }
 
-.features h2{
+.how h2{
   font-size:36px;
-  margin-bottom:10px;
   color:#1e3a8a;
-}
-
-.features p{
   margin-bottom:40px;
-  color:#0b0b0b;
-}
-.feature p:hover{
-  transform: translateY(-8px) scale(1.03);
-  background:#2563eb;
-  color:#ffffff;
-
-  /* Glow effect */
-  box-shadow:
-    0 0 0 2px rgb(37, 99, 235,0.2),
-    0 12px 30px rgba(37,99,235,0.45);
 }
 
-.feature-cards{
-  display:flex;
+.how-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:30px;
 }
 
-.card{
-  background:#ffffff;
-  padding:26px;
-  border-radius:14px;
-  flex:1;
-  border:1px solid #c7d7ee;
+.how-card{
+  background:#eef4fb;
+  padding:30px;
+  border-radius:20px;
+  transition:.3s;
 }
- 
-.card:hover{
-  transform: translateY(-8px) scale(1.03);
+
+.how-card:hover{
+  transform:translateY(-8px);
+}
+
+.how-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:14px;
+}
+
+/* ================= FINAL CTA ================= */
+.final-cta{
   background:#2563eb;
   color:#ffffff;
-
-  /* Glow effect */
-  box-shadow:
-    0 0 0 2px rgb(37, 99, 235,0.2),
-    0 12px 30px rgba(37,99,235,0.45);
+  text-align:center;
+  padding:90px 20px;
 }
 
+.final-cta h2{
+  font-size:36px;
+  margin-bottom:14px;
+}
+
+.final-cta p{
+  font-size:18px;
+  margin-bottom:24px;
+}
+
+.final-cta button{
+  background:#ffffff;
+  color:#2563eb;
+  padding:14px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  padding:30px;
+  background:#eef4fb;
+  text-align:center;
+}
 /* ================= LANGUAGES ================= */
 .languages{
   padding:60px 0;
@@ -264,7 +347,6 @@ main{
     0 12px 30px rgba(37,99,235,0.45);
 }
 
-
 /* ================= TEAM ================= */
 .team{
   padding:60px 0;
@@ -299,14 +381,7 @@ main{
   border-radius:14px;
 }
 
-/* ================= FOOTER ================= */
-footer{
-  padding:30px 0;
-  background:#eef4fb;
-  border-top:1px solid #c7d7ee;
-}
-
-/* ================= POPUP (MODAL) ================= */
+/* ================= MODAL ================= */
 .modal{
   position:fixed;
   inset:0;
@@ -343,23 +418,21 @@ footer{
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:900px){
-  .hero-inner{
+  .hero-inner,
+  .psy-inner,
+  .psy-inner.reverse{
     flex-direction:column;
     text-align:center;
   }
-  .hero-text,.hero-img{
+
+  .hero-text,
+  .hero-img,
+  .psy-text,
+  .psy-img{
     width:100%;
   }
-  .feature-cards{
-    flex-direction:column;
-  }
-  .stats-row,.lang-grid,.team-row{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
 
-@media(max-width:500px){
-  .stats-row,.lang-grid,.team-row{
+  .how-grid{
     grid-template-columns:1fr;
   }
 }
@@ -369,19 +442,17 @@ footer{
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
 <header>
   <div class="page-container nav-inner">
-   <div class="logo">
-  <img src="indexlogo.png" alt="Techverse Logo">
-  Techverse
-</div>
+    <div class="logo">
+      <img src="indexlogo.png">
+      Techverse
+    </div>
 
     <nav>
-      <a href="#features">Features</a>
-      <a href="#languages">Languages</a>
-      <a href="#team">Team</a>
+      <a href="#how">How It Works</a>
     </nav>
+
     <div class="auth-buttons">
       <button class="btn-primary" onclick="openSignup()">Sign Up</button>
       <button class="btn-secondary" onclick="openLogin()">Log In</button>
@@ -391,41 +462,105 @@ footer{
 
 <main>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section class="hero">
   <div class="page-container hero-inner">
     <div class="hero-text">
-      <h1>The Future of Learning is Here</h1>
-      <p>Learn smarter. Explore technologies. Build real skills.</p>
-      <button class="btn-primary" onclick="openSignup()">Get Started</button>
+      <h1>Learn Faster by Teaching Others</h1>
+      <p>Stop memorizing information. Start building real understanding.</p>
+      <button onclick="openSignup()">Get Started Free</button>
+      <div class="hero-sub">No ads • Built for serious learners</div>
     </div>
-    <img src="home.png" class="hero-img" alt="Learning">
-  </div>
-</section>
-
-<!-- ================= STATS ================= -->
-<section class="stats">
-  <div class="page-container stats-row">
-    <div class="stat-box"><h3>50+</h3><p>Learning Paths</p></div>
-    <div class="stat-box"><h3>100+</h3><p>Interactive Modules</p></div>
-    <div class="stat-box"><h3>AI Powered</h3><p>Smart Guidance</p></div>
-    <div class="stat-box"><h3>24×7</h3><p>Learn Anytime</p></div>
-  </div>
-</section>
-
-<!-- ================= FEATURES ================= -->
-<section id="features" class="features">
-  <div class="page-container">
-    <h2>Learning, Reimagined with AI</h2>
-    <p>Designed for curiosity and growth.</p>
-    <div class="feature-cards">
-      <div class="card"><h3>AI Learning Companion</h3><p>Personalized guidance</p></div>
-      <div class="card"><h3>Learn Without Limits</h3><p>Anytime learning</p></div>
-      <div class="card"><h3>Learn by Doing</h3><p>Hands-on practice</p></div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
     </div>
   </div>
 </section>
 
+<!-- PSY 1 -->
+<section class="psy-visual light">
+  <div class="page-container psy-inner">
+    <div class="psy-text">
+      <h2>Why Studying Still Feels Uncertain</h2>
+      <div class="psy-big">
+        <span>You study every day.</span>
+        <span>You watch endless videos.</span>
+        <span>Yet confidence disappears.</span>
+      </div>
+      <p>
+        Passive study creates recognition, not mastery.
+        Without recall and explanation, the brain never confirms learning.
+      </p>
+    </div>
+    <div class="psy-img">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+    </div>
+  </div>
+</section>
+
+<!-- PSY 2 -->
+<section class="psy-visual">
+  <div class="page-container psy-inner reverse">
+    <div class="psy-text">
+      <h2>The Problem Isn’t You</h2>
+      <div class="psy-big">
+        <span>You are capable.</span>
+        <span>You are intelligent.</span>
+        <span>The method failed.</span>
+      </div>
+      <p>
+        Learning systems focus on consumption instead of thinking.
+        Understanding stays fragile.
+      </p>
+    </div>
+    <div class="psy-img">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+    </div>
+  </div>
+</section>
+
+<!-- PSY 3 -->
+<section class="psy-visual light">
+  <div class="page-container psy-inner">
+    <div class="psy-text">
+      <h2>Why Teaching Changes Everything</h2>
+      <div class="psy-big">
+        <span>Explanation creates clarity.</span>
+        <span>Clarity builds confidence.</span>
+        <span>Confidence creates mastery.</span>
+      </div>
+      <p>
+        Teaching forces structure, reveals gaps,
+        and strengthens memory.
+      </p>
+    </div>
+    <div class="psy-img">
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="how">
+  <h2>How Techverse Works</h2>
+  <div class="page-container how-grid">
+    <div class="how-card">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+      <h3>Choose</h3>
+      <p>Select a skill you want to master.</p>
+    </div>
+    <div class="how-card">
+      <img src="understand.png">
+      <h3>Understand</h3>
+      <p>Build clarity through guided learning.</p>
+    </div>
+    <div class="how-card">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <h3>Teach</h3>
+      <p>Explain to others and lock mastery.</p>
+    </div>
+  </div>
+</section>
 <!-- ================= LANGUAGES ================= -->
 <section id="languages" class="languages">
   <div class="page-container">
@@ -443,6 +578,15 @@ footer{
   </div>
 </section>
 
+
+
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Learn the Way the Brain Learns</h2>
+  <p>Stop memorizing. Start understanding.</p>
+  <button onclick="openSignup()">Create Free Account</button>
+</section>
 <!-- ================= TEAM ================= -->
 <section id="team" class="team">
   <div class="page-container">
@@ -459,12 +603,10 @@ footer{
 </main>
 
 <footer>
-  <div class="page-container">
-    © 2024 Techverse
-  </div>
+  © 2025 Techverse
 </footer>
 
-<!-- ================= POPUP ================= -->
+<!-- POPUP -->
 <div id="popup" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closePopup()">×</span>
@@ -477,11 +619,9 @@ const popup = document.getElementById("popup");
 const frame = document.getElementById("popupFrame");
 
 function openSignup(language = ""){
-  if(language){
-    frame.src = "newsignup.html?lang=" + encodeURIComponent(language);
-  } else {
-    frame.src = "newsignup.html";
-  }
+  frame.src = language
+    ? "newsignup.html?lang=" + encodeURIComponent(language)
+    : "newsignup.html";
   popup.style.display = "flex";
 }
 
@@ -495,6 +635,12 @@ function closePopup(){
   frame.src = "";
 }
 
+/* LOGIN / SIGNUP SUCCESS */
+window.addEventListener("message", function(event){
+  if(event.data && (event.data.type === "AUTH_SUCCESS" || event.data.action === "LOGIN_SUCCESS")){
+    window.location.replace("afterlogin.html");
+  }
+});
 /* 👇 Language click → Signup with language */
 document.querySelectorAll(".lang-card").forEach(card => {
   card.addEventListener("click", () => {
@@ -503,36 +649,6 @@ document.querySelectorAll(".lang-card").forEach(card => {
   });
 });
 </script>
-<script>
-window.addEventListener("message", function (event) {
-  if (event.data && event.data.type === "AUTH_SUCCESS") {
-    window.location.replace("afterlogin.html");
-  }
-});
-</script>
-<script>
-window.addEventListener("message", function (event) {
-  if (event.data && event.data.type === "AUTH_SUCCESS") {
-    window.location.replace("afterlogin.html");
-  }
-});
-</script>
-<script>
-/* ===== LISTEN FOR LOGIN / SIGNUP SUCCESS ===== */
-window.addEventListener("message", function (event) {
-
-  console.log("Message received:", event.data); // DEBUG LINE
-
-  if (event.data && event.data.action === "LOGIN_SUCCESS") {
-    window.location.replace("afterlogin.html");
-  }
-
-});
-</script>
-
-
-
-
 
 </body>
 </html>

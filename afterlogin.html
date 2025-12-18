@@ -8,7 +8,6 @@
 
   <!-- ================= STYLES ================= -->
   <style>
-    /* ================= RESET ================= */
     *{
       margin:0;
       padding:0;
@@ -21,7 +20,6 @@
       overflow:hidden;
     }
 
-    /* ================= HEADER ================= */
     header{
       position:fixed;
       top:0; left:0; right:0;
@@ -56,7 +54,6 @@
       cursor:pointer;
     }
 
-    /* ================= SEARCH ================= */
     .search-wrap{
       flex:1;
       display:flex;
@@ -77,7 +74,6 @@
       font-size:14px;
     }
 
-    /* ================= HEADER RIGHT ================= */
     .right{
       display:flex;
       align-items:center;
@@ -104,7 +100,6 @@
       border-radius:999px;
     }
 
-    /* ================= PROFILE ================= */
     .profile{
       display:flex;
       align-items:center;
@@ -145,7 +140,6 @@
       background:#f1f5f9;
     }
 
-    /* ================= SIDEBAR ================= */
     .sidebar{
       position:fixed;
       top:64px;
@@ -190,7 +184,6 @@
       color:#fff;
     }
 
-    /* ================= CONTENT ================= */
     .content{
       margin-left:240px;
       margin-top:64px;
@@ -210,24 +203,16 @@
       background:#fff;
     }
 
-    /* ================= MOBILE ================= */
     @media(max-width:768px){
-      .sidebar{
-        width:0;
-      }
-      .content{
-        margin-left:0;
-      }
-      .search-wrap{
-        display:none;
-      }
+      .sidebar{ width:0; }
+      .content{ margin-left:0; }
+      .search-wrap{ display:none; }
     }
   </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
   <div class="brand">
     <button id="toggleSidebar" class="toggle-btn">☰</button>
@@ -257,7 +242,6 @@
   </div>
 </header>
 
-<!-- ================= SIDEBAR ================= -->
 <nav id="sidebar" class="sidebar">
   <a href="home.html" target="mainFrame" class="nav-link active">🏠 <span>Home</span></a>
   <a href="language.html" target="mainFrame" class="nav-link">💻 <span>Languages</span></a>
@@ -265,57 +249,78 @@
   <a href="quick learning.html" target="mainFrame" class="nav-link">⚡ <span>Quick Learning</span></a>
   <a href="exchange.html" target="mainFrame" class="nav-link">🔁 <span>Exchange</span></a>
   <a href="reward.html" target="mainFrame" class="nav-link">🏆 <span>Rewards</span></a>
+  <a href="feedback.html" target="mainFrame" class="nav-link">
+  📝 <span>Feedback</span>
+</a>
+
 </nav>
 
-<!-- ================= CONTENT ================= -->
 <div id="content" class="content">
   <iframe name="mainFrame" src="home.html"></iframe>
 </div>
 
-<!-- ================= SCRIPT ================= -->
 <script>
-  const sidebar = document.getElementById("sidebar");
-  const content = document.getElementById("content");
-  const toggleBtn = document.getElementById("toggleSidebar");
+const sidebar = document.getElementById("sidebar");
+const content = document.getElementById("content");
+const toggleBtn = document.getElementById("toggleSidebar");
+const profileBtn = document.getElementById("profileBtn");
+const profileMenu = document.getElementById("profileMenu");
 
-  const profileBtn = document.getElementById("profileBtn");
-  const profileMenu = document.getElementById("profileMenu");
+toggleBtn.onclick = () => {
+  sidebar.classList.toggle("collapsed");
+  content.classList.toggle("collapsed");
+};
 
-  /* Sidebar toggle */
-  toggleBtn.onclick = () => {
-    sidebar.classList.toggle("collapsed");
-    content.classList.toggle("collapsed");
+document.querySelectorAll(".nav-link").forEach(link=>{
+  link.onclick = ()=>{
+    document.querySelectorAll(".nav-link").forEach(l=>l.classList.remove("active"));
+    link.classList.add("active");
   };
+});
 
-  /* Active link */
-  document.querySelectorAll(".nav-link").forEach(link=>{
-    link.onclick = ()=>{
-      document.querySelectorAll(".nav-link").forEach(l=>l.classList.remove("active"));
-      link.classList.add("active");
-    };
-  });
+profileBtn.onclick = e => {
+  e.stopPropagation();
+  profileMenu.style.display =
+    profileMenu.style.display === "block" ? "none" : "block";
+};
 
-  /* Profile dropdown */
-  profileBtn.onclick = e => {
-    e.stopPropagation();
-    profileMenu.style.display =
-      profileMenu.style.display === "block" ? "none" : "block";
-  };
+document.addEventListener("click", ()=> profileMenu.style.display="none");
 
-  document.addEventListener("click", ()=> profileMenu.style.display="none");
+document.getElementById("notifBtn").onclick = ()=>{
+  document.querySelector("iframe").src = "notification.html";
+  document.getElementById("notifCount").style.display="none";
+};
+</script>
 
-  /* 🔴 LOGOUT → FULL PAGE (NO IFRAME) */
-  document.getElementById("logoutLink").onclick = e => {
-    e.preventDefault();
-    localStorage.clear();
+<!-- ================= FIREBASE DASHBOARD LOGIC ================= -->
+<script type="module">
+import { auth } from "./firebase-config.js";
+import {
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+const avatar = document.querySelector(".avatar");
+const logoutLink = document.getElementById("logoutLink");
+
+/* AUTH GUARD + PROFILE PHOTO */
+onAuthStateChanged(auth, user => {
+  if (!user) {
     window.top.location.href = "newindex.html";
-  };
+    return;
+  }
 
-  /* Notifications */
-  document.getElementById("notifBtn").onclick = ()=>{
-    document.querySelector("iframe").src = "notification.html";
-    document.getElementById("notifCount").style.display="none";
-  };
+  if (user.photoURL) {
+    avatar.src = user.photoURL;
+  }
+});
+
+/* LOGOUT */
+logoutLink.onclick = async (e) => {
+  e.preventDefault();
+  await signOut(auth);
+  window.top.location.href = "newindex.html";
+};
 </script>
 
 </body>
