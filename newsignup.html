@@ -1,221 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Techverse | Create Account</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techverse | Create Account</title>
 
-  <!-- ================= CSS ================= -->
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
 
-    /* BODY */
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffffff;
-    }
+/* ================= BODY ================= */
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f4f7fb;
+  overflow:hidden;
+}
 
-    /* SIGNUP CARD */
-    .signup-box {
-      width: 100%;
-      max-width: 440px;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-      animation: pop 0.35s ease;
-    }
+/* ================= PANDA AREA ================= */
+.panda-wrapper{
+  position:absolute;
+  top:30px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+}
 
-    @keyframes pop {
-      from {
-        transform: scale(0.9);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+.panda{
+  width:140px;
+  height:140px;
+  position:relative;
+}
 
-    /* LOGO */
-    .logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
+/* HEAD */
+.panda-head{
+  width:120px;
+  height:120px;
+  background:white;
+  border-radius:50%;
+  position:relative;
+  margin:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
 
-    .logo img {
-      width: 105px;
-      height: 85px;
-      border-radius: 8px;
-    }
+/* EARS */
+.ear{
+  width:35px;
+  height:35px;
+  background:#111;
+  border-radius:50%;
+  position:absolute;
+  top:-10px;
+}
+.ear.left{ left:5px; }
+.ear.right{ right:5px; }
 
-    /* TITLE */
-    h2 {
-      text-align: center;
-      margin-bottom: 6px;
-      color: #0b3b6f;
-    }
+/* EYES */
+.eye{
+  width:22px;
+  height:30px;
+  background:#111;
+  border-radius:50%;
+  position:absolute;
+  top:40px;
+}
+.eye.left{ left:28px; }
+.eye.right{ right:28px; }
 
-    p {
-      text-align: center;
-      font-size: 14px;
-      color: #475569;
-      margin-bottom: 22px;
-      font-weight: 600;
-    }
+.eye::after{
+  content:'';
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:6px;
+  left:6px;
+}
 
-    /* INPUTS */
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 14px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      font-size: 15px;
-      outline: none;
-    }
+/* NOSE */
+.nose{
+  width:14px;
+  height:10px;
+  background:#111;
+  border-radius:50%;
+  position:absolute;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+}
 
-    input:focus {
-      border-color: #135bec;
-    }
+/* HAND */
+.hand{
+  width:40px;
+  height:40px;
+  background:#111;
+  border-radius:50%;
+  position:absolute;
+  right:-20px;
+  top:60px;
+  transform-origin:left center;
+  animation:wave 1.2s infinite ease-in-out;
+}
 
-    /* BUTTON */
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #135bec;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+/* WAVE ANIMATION */
+@keyframes wave{
+  0%{ transform:rotate(0deg); }
+  50%{ transform:rotate(-30deg); }
+  100%{ transform:rotate(0deg); }
+}
 
-    button:hover {
-      background: #0b3b6f;
-    }
+/* ================= SIGNUP CARD ================= */
+.signup-box{
+  width:100%;
+  max-width:440px;
+  background:#ffffff;
+  padding:35px 30px 30px;
+  border-radius:18px;
+  box-shadow:0 18px 45px rgba(0,0,0,0.15);
+  position:relative;
+  z-index:2;
+  animation:pop 0.35s ease;
+}
 
-    /* EXTRA */
-    .extra {
-      margin-top: 16px;
-      text-align: center;
-      font-size: 14px;
-      color: #475569;
-    }
+@keyframes pop{
+  from{ transform:scale(0.92); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
 
-    .extra a {
-      color: #135bec;
-      font-weight: bold;
-      text-decoration: none;
-    }
+/* ================= LOGO ================= */
+.logo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:18px;
+}
 
-    .extra a:hover {
-      text-decoration: underline;
-    }
-  </style>
+.logo img{
+  width:105px;
+  height:85px;
+  border-radius:8px;
+}
+
+/* ================= TEXT ================= */
+h2{
+  text-align:center;
+  margin-bottom:6px;
+  color:#0b3b6f;
+}
+
+p{
+  text-align:center;
+  font-size:14px;
+  color:#475569;
+  margin-bottom:22px;
+  font-weight:600;
+}
+
+/* ================= INPUT ================= */
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:14px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#135bec;
+}
+
+/* ================= BUTTON ================= */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#135bec;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  background:#0b3b6f;
+}
+
+/* ================= EXTRA ================= */
+.extra{
+  margin-top:16px;
+  text-align:center;
+  font-size:14px;
+  color:#475569;
+}
+
+.extra a{
+  color:#135bec;
+  font-weight:bold;
+  text-decoration:none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ================= SIGNUP CARD ================= -->
-  <div class="signup-box">
-
-    <div class="logo">
-      <img src="indexlogo.png" alt="Techverse Logo" />
+<!-- ================= PANDA GREETING ================= -->
+<div class="panda-wrapper">
+  <div class="panda">
+    <div class="panda-head">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+      <div class="hand"></div>
     </div>
+  </div>
+</div>
 
-    <h2>Create Account 🚀</h2>
-    <p>Join Techverse and start learning today</p>
+<!-- ================= SIGNUP CARD ================= -->
+<div class="signup-box">
 
-    <!-- INPUTS -->
-    <input type="text" id="name" placeholder="Full Name" />
-    <input type="email" id="email" placeholder="Email Address" />
-    <input type="password" id="password" placeholder="Password" />
-    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
-
-    <!-- BUTTON -->
-    <button onclick="signup()">Create Account</button>
-
-    <div class="extra">
-      Already have an account?
-      <a href="newlogin.html">Login</a>
-    </div>
-
+  <div class="logo">
+    <img src="indexlogo.png" alt="Techverse Logo">
   </div>
 
-  <!-- ================= FIREBASE SIGNUP SCRIPT ================= -->
-  <script type="module">
-    /* ---------------------------------------------------------
-       IMPORT FIREBASE AUTH
-    --------------------------------------------------------- */
-    import { auth } from "./firebase-config.js";
-    import {
-      createUserWithEmailAndPassword,
-      updateProfile
-    } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  <h2>Create Account 🚀</h2>
+  <p>Join Techverse and start learning today</p>
 
-    /* ---------------------------------------------------------
-       SIGNUP FUNCTION (ONLY ONE, FINAL)
-    --------------------------------------------------------- */
-    window.signup = function () {
-      const name = document.getElementById("name");
-      const email = document.getElementById("email");
-      const password = document.getElementById("password");
-      const confirmPassword = document.getElementById("confirmPassword");
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="email" id="email" placeholder="Email Address">
+  <input type="password" id="password" placeholder="Password">
+  <input type="password" id="confirmPassword" placeholder="Confirm Password">
 
-      /* VALIDATION */
-      if (
-        !name.value ||
-        !email.value ||
-        !password.value ||
-        !confirmPassword.value
-      ) {
-        alert("Please fill all fields");
-        return;
-      }
+  <button onclick="signup()">Create Account</button>
 
-      if (password.value.length < 6) {
-        alert("Password must be at least 6 characters");
-        return;
-      }
+  <div class="extra">
+    Already have an account?
+    <a href="newlogin.html">Login</a>
+  </div>
 
-      if (password.value !== confirmPassword.value) {
-        alert("Passwords do not match");
-        return;
-      }
+</div>
 
-      /* FIREBASE CREATE USER */
-      createUserWithEmailAndPassword(auth, email.value, password.value)
-        .then((cred) => {
-          /* SAVE USER NAME */
-          return updateProfile(cred.user, {
-            displayName: name.value
-          });
-        })
-        .then(() => {
-          /* SAFE REDIRECT FROM IFRAME */
-          window.parent.postMessage(
-            { type: "AUTH_SUCCESS" },
-            "*"
-          );
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    };
-  </script>
+<!-- ================= FIREBASE SCRIPT ================= -->
+<script type="module">
+import { auth } from "./firebase-config.js";
+import { createUserWithEmailAndPassword, updateProfile }
+from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+window.signup = function(){
+  const name=document.getElementById("name");
+  const email=document.getElementById("email");
+  const password=document.getElementById("password");
+  const confirmPassword=document.getElementById("confirmPassword");
+
+  if(!name.value||!email.value||!password.value||!confirmPassword.value){
+    alert("Please fill all fields"); return;
+  }
+
+  if(password.value.length<6){
+    alert("Password must be at least 6 characters"); return;
+  }
+
+  if(password.value!==confirmPassword.value){
+    alert("Passwords do not match"); return;
+  }
+
+  createUserWithEmailAndPassword(auth,email.value,password.value)
+    .then(cred=>updateProfile(cred.user,{displayName:name.value}))
+    .then(()=>window.parent.postMessage({type:"AUTH_SUCCESS"},"*"))
+    .catch(err=>alert(err.message));
+};
+</script>
 
 </body>
 </html>
